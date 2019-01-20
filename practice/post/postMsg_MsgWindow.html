@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>message</title>
+</head>
+<body>
+message:<span id="message"></span>
+</body>
+</html>
+<script type="text/javascript">
+window.name="postMsg-message"
+var origin="http://hudan.coding.me"
+
+// 当文档加载完毕, 给父级来源发送信息。
+window.addEventListener('load', function(e){
+    e.currentTarget.opener.postMessage('ready',origin)
+})
+
+// 当窗体关闭，告诉父级窗体已经关闭了。
+window.addEventListener('unload', function(e){
+    e.currentTarget.opener.postMessage('closed',origin)
+})
+
+window.addEventListener('message', function(e) {
+	if(e.origin==origin){
+    	document.querySelector("#message").innerHTML = e.data
+    	e.source.postMessage("recived message!!",origin)
+    }
+})
+
+</script>

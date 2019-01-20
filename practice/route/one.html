@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>one</title>
+	<style type="text/css">
+		.content{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div class="left">
+	</div>
+	<div class="content">
+		<span>one</span>
+	</div>
+	<div class="foot">
+		<span>i m foot</span>
+	</div>
+</body>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript">
+	$(".content span").on("click",function(){
+		console.log($(this).text())
+	})
+</script>	
+</html>

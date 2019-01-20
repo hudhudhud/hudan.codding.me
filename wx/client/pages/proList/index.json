@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "myimg": "../../custom-component/myimg/index"
+  }
+}

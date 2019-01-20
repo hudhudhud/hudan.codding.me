@@ -1,0 +1,22 @@
+page{
+  background-color:#fff;
+}
+.list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.list .item{
+  width:48%;
+  height:220rpx;
+  line-height: 220rpx;
+  text-align: center;
+  background-color:#ecefed;
+  border-radius: 30rpx;
+  font-weight: 600;
+  font-size:1rem;
+  margin-top:20rpx;
+}
+.list .item:nth-child(2n+1){
+  margin-right:4%;
+}

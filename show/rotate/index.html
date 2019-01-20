@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>rotate</title>
+<link rel="stylesheet" type="text/css" href="rotate.css">
+<style type="text/css">
+body{
+  margin:0;
+  background-color: rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+*{
+  xbackground-color: rgba(0,0,0,0.1);
+ /*  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  background-clip:padding-box; */
+  user-select:none;
+}
+.cursor{
+  cursor:pointer
+}
+#control{
+  width: 300px;
+  height: 300px;
+  border:20px solid rgba(111,0,0,0.1);
+  border-radius:50%;
+  background-image:linear-gradient(to right,red 50%,blue 0,blue 50%);
+  display:flex;
+  position: relative;
+  margin:auto;
+  margin-top:calc(50vh - 150px);
+  
+}
+
+.deg{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  text-align: center;
+  line-height: 50px;
+  font-size: 50px;
+  margin:0;
+}
+</style>
+</head>
+<body>
+
+<section id="control">
+   <p class="deg"></p> 
+</section>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="rotate.js"></script>
+<script type="text/javascript">
+let config=$('#control').knob({
+      from:0,
+      to:359,
+      value:60,
+      turn:function(deg){
+         $(".deg").text(deg)
+         $('#control').css("background-image",`linear-gradient(${deg}deg,red 50%,blue 0,blue 50%)`)
+         this.start=deg
+      }
+  })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<import src="../../template/article/index.wxml" />
+<view class='content'>
+  <swiper indicator-dots="true" class='swiper' autoplay="true" interval="3000">
+    <block wx:for="{{article.sliderImgs}}" wx:key="{{index}}" v-if="{{article.sliderImgs}}">
+      <swiper-item>
+         <p style="background-image:url({{item}})" class="slide-image"></p>
+      </swiper-item>
+    </block>
+    <swiper-item v-else>
+        <p style="background-image:url({{article.coverImg}})" class="slide-image"></p>
+    </swiper-item>
+  
+  </swiper>
+  <view class='header-bar mod'>
+      <template is="articleTemp" data="{{...article,hiddenImg:true}}"/>
+  </view>
+<view class='spec mod' wx-if="{{catg==1}}">
+  <p class="sc">食材</p>
+  <block wx:for="{{article.spec}}" >
+      <view class="clearfix {{index%2==1?'bg-gray':''}}">
+          <text class="{{index%2==0?'main-color':''}} spec-name">{{item.name}}</text>
+          <text class='spec-qua'>{{item.quality}}</text>
+       </view>
+  </block>
+</view>
+<view class='xq mod'>
+  <rich-text nodes="{{article.details}}" ></rich-text>
+</view>
+<view class='pls mod'>
+  <view class='pl-bt clearfix'><text>评论笔记</text><text>共{{plList.length}}条</text></view>
+  <view class=''>
+    <block wx:for="{{plList}}">
+      <view class='pl'>
+        <image src="https://iamabj.club/img/upload/1526031678493.jpeg"></image>
+        <view class='right'>
+          <text class='pl-from'>{{item.from}}</text>
+          <text class='pl-content'>{{item.content}}</text>
+          <view class='hfs' wx:if="{{item.hf.length}}">
+              <view wx:for="{{item.hf}}" class='hf' >
+                   <image src="https://iamabj.club/img/upload/1526031678493.jpeg"></image> 
+                   <view class='hf-right'>
+                      <text class='main-color pl-from'>{{item.from}}：</text>
+                      <text class='hf-content'>{{item.content}}</text>
+                   </view>
+              </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+ <view class='srpl' bindtap='tapPj'  > 
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      <input type="text" placeholder='洒下口水减体重嘿嘿~' /> 
+ </view>  
+<!-- <view class='plq {{popPl?"pop":""}}'>
+  <view class='srpl' bindtap='tapPj'  > 
+      <i wx:if="{{!popPl}}" class="fa fa-pencil" aria-hidden="true"></i>
+       <input type="text" placeholder='洒下口水减体重嘿嘿~' disabled='true' /> 
+      <textarea type="text"  class='{{popPl?"pop-textarea":"srpl-textarea"}}' placeholder="{{popPl?'优质评论将会被优先展示~':'洒下口水减体重嘿嘿'}}"
+      bindblur="bindblur" bindconfirm="bindconfirm" 
+      cursor-spacing="40" maxlength="-1" />
+  </view>  
+   <view class='srpj-pop' wx:else bindtap='tapPlPop'>
+    <view class='input-view'>
+      <textarea type="text" placeholder='优质评论将会被优先展示~' 
+      bindblur="bindblur" bindconfirm="bindconfirm" 
+      cursor-spacing="40" maxlength="-1"  focus="{{textareaFocus}}" />
+    </view>
+  </view> 
+</view> -->
+
+</view>

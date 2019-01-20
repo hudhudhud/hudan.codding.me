@@ -1,0 +1,5 @@
+<view class='content'>
+    <view class='list mod' >
+        <text wx:for="{{catgs}}" class="item">{{item.name}}</text>
+    </view>
+</view>

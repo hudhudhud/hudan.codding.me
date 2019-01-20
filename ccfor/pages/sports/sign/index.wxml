@@ -1,0 +1,23 @@
+<!--pages/sports/sign/index.wxml-->
+<view class='content'>
+    <view class='circle'>
+        <text class="lab">累计训练天数</text>
+        <text class='num main-color'>{{days}}</text>
+        <text class="pm">暂无排名</text>
+    </view>
+
+    <view class="btn-xl bg-main-color ">开始训练</view>
+    <view class="lab con">每一分钟的坚持只为遇见更好的自己~</view>
+
+    <view wx:if="{{sports.length==0}}" class="lab lis">暂无训练请先添加</view>
+    <view wx:else class='list mod-padd'>
+     <view class='title clearfix'>
+       <text class="fl">我的训练</text>
+       <text class="fr">添加训练 〉</text>
+     </view>
+      <view class="item clearfix" wx:for="{{sports}}">
+        <text class="fl">{{item.name}}</text>
+        <text class="fr time">{{item.time}}分钟</text>
+      </view>
+    </view>
+</view>

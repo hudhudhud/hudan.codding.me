@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择商品",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "myimg": "../../custom-component/myimg/index"
+  }
+}

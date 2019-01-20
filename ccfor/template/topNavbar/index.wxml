@@ -1,0 +1,8 @@
+<template name="topNavbarTemp">
+  <view class='topNavbar'>
+    <block wx:for="{{catgs}}" wx:key="{{item.val}}">
+        <text  bindtap="tapCatg" data-catg="{{index}}" class='topbar {{catgIndex==index?"active border-main-color":""}}'
+        style="margin-right:{{index<catgs.length-1?barDis:0}}">{{item.name}}</text>
+    </block>
+  </view>
+</template>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/misozosiki/7/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+div{
+  position:relative;
+  width:200px;
+  height:50px;
+}
+input{
+  box-sizing:border-box;
+  width:200px;
+  height:50px;
+  border-radius:10px;
+  outline: none;
+  border:1px solid;
+  padding:3px;
+}
+
+input+label:after{
+  content:attr(data);
+  position:absolute;
+  left:50%;
+  font-size:15px;
+  top:50%;
+  transform:translateX(-50%) translateY(-50%);
+ 
+  transition:top 0.1s linear;
+  white-space: nowrap;
+  pointer-events: none;
+}
+input:focus +label:after{
+  content:attr(data);
+  top:0;
+  transform:translateX(-50%) translateY(-50%) scale(0.9, 0.9);
+  background-color:white;
+  transition:top 0.1s linear;
+}
+</style>
+</head>
+<body>
+  <div>
+    
+<input type="text" placeholder="">
+<label for="" data="input password"></label>
+  </div>
+</body>
+</html>

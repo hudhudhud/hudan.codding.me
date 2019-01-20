@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="user-scalable=1">
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<style type="text/css">
+	html,body{
+		width:100%;
+		height:100%;
+		margin:0;
+	}
+	div{
+		font-size:60px;
+		box-sizing: border-box;
+		border:1px solid red;
+		width:100%;
+		height: 100%;
+	}
+	img{
+		width:100%;
+		height: auto;
+
+	}
+	.img-show-window{
+		z-index:900000;
+		background-color:black;
+		position:fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 100%;
+	}
+	.img-show{
+		position:absolute;
+		top:50%;
+		transform:translateY(-50%);
+		width:100%;
+		height:auto;
+	}
+</style>
+<body>
+<div>
+	<img src="imgs\a.jpg">
+	<img src="imgs\b.jpg">
+	<img src="imgs\a.jpg">
+	<img src="imgs\b.jpg">
+	<img src="imgs\a.jpg">
+	<img src="imgs\b.jpg">
+</div>
+</body>
+<script type="text/javascript">
+jQuery(function($){
+	var click=0
+	var lastTime=-Infinity
+	$("div").find("img").on("click",function(){
+		click++
+		lastTime=Date.now()
+		var div=$(`<div class="img-show-window">
+				   <img src=${$(this).attr("src")} class="img-show"></img>
+				   </div>`)
+		$("body").append(div)
+		var img=$(div).find("img")
+		
+		var time=500
+		var end=false
+		var preX=0,preY=0
+		var preDistanceX=0,preDistanceY=0
+		var timeId
+		$(div).on("touchstart",function(e) {
+			if(Date.now()-lastTime<time&&click==1){
+				console.log("scale")
+				scale()
+				return
+			}
+			click=1
+			end=false
+			preX=e.touches[0].clientX
+			preY=e.touches[0].clientY
+			
+	    	lastTime=Date.now()
+	    	timeId=setTimeout(()=>{
+	    		if(end){
+			       click=0
+			       lastTime=-Infinity
+			       $(this).find("img").attr("style","")
+				   $(this).remove()
+	    		}
+	    	},time)
+		})
+		
+		function scale() {
+			click=0
+			lastTime=-Infinity
+			clearTimeout(timeId)
+			if($(img).attr("style")&&$(img).attr("style").indexOf("transform:scale(2)")>-1){
+	    		$(img).attr("style","")
+	    	}
+	    	else {
+	    		$(img).attr("style",`transform:scale(2);top:25%`)
+	    	}
+		}
+
+		$(img).on("touchmove",function(e) {
+			console.log(e.touches)
+			click=0
+			var x=e.touches[0].clientX
+			var y=e.touches[0].clientY
+			var distanceX=preDistanceX+x-preX
+			var distanceY=preDistanceY+y-preY
+			// var tran3d =$(this).attr("style")?$(this).attr("style").match(/translate3d\((.+)\)/)[1].split(","):null
+			console.log(distanceX,distanceY,e.touches[0])
+		    $(this).attr("style",`transform:scale(2) translate3d(${distanceX/2}px,${distanceY/2}px, 0px);top:25%;`)
+		    preDistanceX=distanceX
+		    preDistanceY=distanceY
+		    preX=x
+			preY=y
+			e.preventDefault()
+		})
+		$(div).on("touchend",function() {
+			end=true
+		})
+	})
+})
+</script>
+</html>

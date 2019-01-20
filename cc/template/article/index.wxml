@@ -1,0 +1,26 @@
+<template name="articleTemp">
+  <view class='pro-info clearfix'>
+      <navigator url="/pages/articleDetail/index?id={{_id}}&catg={{catg}}" wx-if="{{!hiddenImg}}"> 
+             <view class='coverImg' style="background-image:url({{coverImg}})"
+           data-id="{{_id}}" data-catg="{{catg}}"></view>
+      </navigator>  
+      <view class='info {{nopadding?"":"mod"}}'>
+          <view class='line'>
+              <text>{{beforeTitle}}{{title}}</text>
+          </view>
+          <view class='line clearfix'>
+              <view class='tx {{styleTx}}'>
+                  <p style="background-image:url(https://iamabj.club/img/upload/1526031678493.jpeg)"></p>
+                  <text>cc有缘人</text>
+              </view>
+              
+              <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="tapZan" class='zan'   data-id="{{_id}}"
+                  plain="true" hover-class="none"><text class="fa {{zan?'fa-heart':'fa-heart-o'}}" ></text><text class='font-gray'>{{zanUserIds.length}}</text></button> -->
+              
+              <view class='zan'  bindtap="tapZan"  data-id="{{_id}}">
+                <text class="fa {{zan?'fa-heart':'fa-heart-o'}}" ></text><text class='font-gray'>{{zanUserIds.length}}</text>
+              </view> 
+          </view>
+      </view>
+  </view>
+</template>

@@ -1,0 +1,14 @@
+<view hidden='{{modalHidden}}'>  
+  <view class='mask_layer' bindtap='modal_click_Hidden' />  
+  <view class='modal_box'>  
+    <view class="title" wvx:if="{{modalTitle}}">{{modalTitle}}</view>  
+    <view class='content'>  
+       <text class='modalMsg' wvx:if="{{modalMsg}}">{{modalMsg}}</text>   
+       <slot></slot>
+    </view>  
+    <view class='btn' hidden='{{isConfirm}}'>  
+      <view bindtap='modal_click_Hidden' class='cancel'>{{modalCancelMsg}}</view>  
+      <view bindtap='Sure' class='Sure'>{{modalSureMsg}}</view>  
+    </view>  
+  </view>  
+</view>  

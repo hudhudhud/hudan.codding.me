@@ -1,0 +1,62 @@
+/* pages/tagList/index.wxss */
+/*隐藏滚动条  */
+::-webkit-scrollbar {
+width:0;
+height:0;
+color: transparent;
+}
+.group{
+  width:100%;
+  text-align: center;
+  padding:10rpx 20rpx;
+  box-sizing: border-box;
+}
+.groupName{
+  font-weight: bold;
+  font-size: .8rem;
+}
+.tagList{
+  width:100%;
+  margin-top:60rpx;
+}
+.tagList .tag{
+  float:left;
+  margin-bottom:60rpx;
+  xborder:1px solid;
+  box-sizing: border-box;
+}
+.tagList{
+  xborder:2px solid;
+  box-sizing: border-box
+}
+.tagList.two .tag:nth-child(2n+1){
+  margin-right: 10rpx;
+}
+.tagList.two .tag{
+  width:calc((100% - 10rpx)/2);
+  height: 200rpx;
+ background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  line-height: 200rpx;
+  xborder:1px solid;
+  color:#fff;
+  font-size:1.5rem;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+  background-color: pink; 
+}
+.tagList.three .tag{
+  width:calc(100% /3);
+}
+
+.tagList.three .tag image{
+  width:170rpx;
+  height: 170rpx;
+  xborder:1px solid red;
+}
+.tagList.three .tag text{
+  xline-height: 2em;
+  display: block;
+}

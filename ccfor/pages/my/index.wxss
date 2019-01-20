@@ -1,0 +1,160 @@
+@import '/template/article/index.wxss';
+.content{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.header-contain{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+}
+.header{
+  color:#fff;
+}
+
+.header-has{
+  height: 300rpx;
+  transition: height .5s ease;
+}
+.header-no{
+  height:0rpx;
+  transition: height .5s ease; 
+}
+.header-no .info-tx{
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.header-has .info-tx{
+  opacity:1;
+  text-align: center;
+  transition: opacity .5s ease;
+}
+.info-tx{
+  text-align: center;
+  width:100%;
+  padding-top:100rpx;
+}
+.info-tx p{
+  display: block;
+  width:120rpx;
+  height:120rpx;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left:calc((100% - 120rpx)/ 2);
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.bars{
+  width:100%;
+  color:#fff;
+  height:120rpx;
+  box-sizing:border-box;
+  overflow:hidden;
+  position:relative;
+  padding-top:10rpx;
+}
+.bar{
+  width:50%;
+  display: inline-block;
+  text-align: center;
+}
+.bar text{
+  display: block;
+}
+.bar text.num{
+  font-weight: bold;
+}
+.active{
+  position:absolute;
+  display: block;
+  width:40rpx;
+  height: 40rpx;
+  background-color:#fff;
+  margin-top:20rpx;
+  transform: translateX(-50%) rotate(45deg);
+  transition: left .1s linear;
+}
+.lis{
+  flex-grow: 1;
+}
+.li{
+  padding:30rpx 20rpx;
+}
+.li .fa{
+  margin-right: 20rpx;
+}
+ .wxdl{
+  width:80%;
+  padding:20rpx 0;
+  margin:auto;
+  text-align: center;
+  background-color:#1aac19;
+  color:#fff;
+  font-size: .8rem;
+  border-radius: 10rpx;
+  line-height: 1em;
+  position:relative;
+}
+ button{
+  position:absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width:100%;
+  display: inline-block;
+}  
+.list{
+  padding:0 10rpx;
+  padding-top:30rpx;
+  width:100%;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.list-bottom{
+  margin-top:420rpx;
+  transition: margin-top .5s ease;
+}
+.list-top{
+  margin-top:120rpx;
+  transition: margin-top .5s ease;
+}
+.two:nth-child(2n+1){
+  margin-right: 20rpx;
+}
+.two{
+  width:calc((100% - 20rpx) / 2);
+  box-sizing: border-box;
+  float:left;
+  height:500rpx;
+  xborder:1px solid;
+  margin-bottom:10rpx;
+}
+.msg{
+  width:100%;
+  border-bottom:5rpx solid #fbfbfb; 
+  padding:30rpx 20rpx;
+  box-sizing: border-box;
+}
+.msg image{
+  width:112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  vertical-align: -20rpx;
+  border:5rpx solid #f8f8f8;
+  margin-right: 10rpx;
+}
+.msg .right{
+  height: 112rpx;
+  display: inline-block;
+  xborder:1px solid;
+}
+.msg .right text{
+  display: block;
+}
+.msg .right .msg-content{
+  margin-top:10rpx;
+}

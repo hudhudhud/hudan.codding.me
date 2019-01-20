@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/articleDetail/index",
+    "pages/my/index",
+    "pages/meals/index",
+    "pages/logs/logs",
+    "pages/tagList/index",
+    "pages/my/setInfo/index",
+    "pages/sports/catg/index",
+    "pages/sports/sign/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#20cb8a",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "borderStyle": "white",
+    "list": [
+      { 
+        "pagePath": "pages/home/index",
+        "text": "发现",
+        "iconPath": "/img/home.png",
+        "selectedIconPath": "/img/home1.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/img/my.png",
+        "selectedIconPath": "/img/my1.png"
+      }
+    ]
+  }
+}

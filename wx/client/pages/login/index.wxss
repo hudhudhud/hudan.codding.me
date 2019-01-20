@@ -1,0 +1,97 @@
+.page{
+  width:100%;
+}
+.content{
+  margin:auto;
+  margin-top:100rpx;
+  width:85%;
+}
+.phone,.yzm{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin:30rpx 0;
+}
+.phone input,.yzm input{
+  border-bottom:2px solid #ebebeb;
+  height: 100%;
+  width:100%;
+  font-size:30rpx;
+}
+.phone{
+  position: relative;
+}
+.phone text{
+  position:absolute;
+  color:#ff6801;
+}
+.phone input{
+  padding-left:100rpx;
+}
+.yzm{
+  position: relative;
+}
+.yzm input{
+  width:60%;
+}
+.yzm text{
+  border:2px solid #e79f63;
+  font-size: 30rpx;
+  width:35%;
+  box-sizing: border-box;
+  text-align: center;
+  color:#e79f63;
+  position: absolute;
+  right: 0;
+  top:2px;
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+button{
+  background-color:#ff6801;
+  color:white;
+  margin-top:50rpx;
+}
+.or{
+  position: relative;
+  color:#b8b8b8;
+  text-align: center;
+  margin:100rpx 0;
+  font-size: 35rpx;
+}
+.or::before,.or::after{
+  content:"";
+  display: inline-block;
+  border-bottom:1px solid;
+  width:45%;
+  position: absolute;
+  bottom:8px;
+}
+.or::before{
+  left:0;
+}
+.or::after{
+  right:0;
+}
+
+.wx-login,.user-login{
+  display: inline-block;
+  width:45%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  text-align: center;
+  font-size:30rpx;
+}
+.wx-login{
+  float:left;
+  background-color: #86cc52;
+  color:white;
+}
+.user-login{
+  float:right;
+  border:2px solid #b8b8b8;
+}

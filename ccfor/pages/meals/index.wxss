@@ -1,0 +1,25 @@
+/* pages/meals/index.wxss */
+@import '/template/article/index.wxss';
+@import '/template/topNavbar/index.wxss';
+.list text.line{
+  padding:24rpx 30rpx;
+}
+.two:nth-child(2n+1){
+    margin-right: 20rpx;
+}
+.two{
+  width:calc((100% - 20rpx) / 2);
+  box-sizing: border-box;
+  float:left;
+  height:500rpx;
+  xborder:1px solid;
+  margin-bottom:10rpx;
+}
+
+.minitx p{
+  width:44rpx;
+  height: 44rpx;
+}
+.minitx text{
+  font-size:.6rem;
+}

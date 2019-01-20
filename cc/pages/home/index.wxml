@@ -1,0 +1,40 @@
+<import src="../../template/article/index.wxml" />
+<import src="../../template/topNavbar/index.wxml" />
+<!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+<template is="topNavbarTemp" data="{{catgs,catgIndex,barDis}}"/>
+<view class='content hastopbar outer'>
+ <view wx:if="{{reachtop}}">加载中...</view>
+  <view class='contain' style="margin-left:{{left}}%;width:{{containWith}}%"> 
+      <block wx:for="{{catgs}}" wx:key="{{catgItem.val}}"  wx:for-item="catgItem" >
+          <scroll-view class='content' bindtouchstart="touchstart"  bindtouchend="touchend" 
+          bindscrolltolower="onReachBottom" scroll-y="true" scroll-with-animation="true"
+          enable-back-to-top="true">
+              <view>
+                  <swiper indicator-dots="true" class='swiper' autoplay='true' interval='3000'>
+                      <block wx:for="{{catgItem.sliderImgs}}">
+                        <swiper-item>
+                          <p style="background-image:url({{item}})" class="slide-image"></p>
+                        </swiper-item>
+                      </block>
+                    </swiper>
+                    <view class='bar mod-bak'>
+                        <view wx:for="{{catgItem.bar}}" wx:for-item="bar" style="width:{{catgItem.barwidth}}%">
+                          <navigator url="{{bar.url+'?title='+bar.name+'&modeId='+bar.id}}">
+                              <text class='bg-main-color'></text>
+                              <text class='font-gray'>{{bar.name}}</text>
+                            </navigator>
+                        </view>
+                    </view>
+              </view>
+              
+              <view class="list mod-bak">
+                <text class='line'>大家都在看</text>
+                 <block wx:for="{{articles}}" wx:key="{{index}}" wx:for-item="article"  >
+                    <template wx:if="{{catgItem.val==article.catg}}"   is="articleTemp" data="{{...article,beforeTitle:'每日一更:'}}"/>
+                </block> 
+                <view wx:if="{{reachBottom}}" class='loading'>加载中...</view>
+              </view>
+          </scroll-view>
+      </block> 
+  </view>
+ </view>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style type="text/css">
+    body{
+      font-size:15px;
+    }
+    p{
+       font-family:Courier,'幼圆',serif;
+    }
+    /*自定义checkbox 与 radio*/
+    input{
+    display:none;
+    }
+    input+span{
+    display:inline-block;
+    border:3px solid;
+    width:30px;
+    height:30px;
+    text-align:center;
+    line-height:33px;
+    vertical-align:middle;
+    }
+    input[type=checkbox]+span{
+    font-size:0px;
+    transition:font-size 0.1s linear;
+    }
+    input[type=checkbox]:checked+span{
+    font-size:30px;
+    }
+    input[type=checkbox]:checked +span:after{
+    content:"√";
+    }
+    input[type=radio] +span{
+    border-radius:30px;
+    transition:all 0.1s linear;
+    }
+    input[type=radio]:checked +span{
+    background-color:red;
+    }
+    /*九宫格*/
+    table{
+    border-collapse:collapse;
+    }
+    table tr td{
+    border:2px solid;
+    width:50px;
+    height:50px;
+    display:inline-block;
+    margin-right:-2px;
+    margin-bottom:-2px;
+    position:relative;
+    text-align:center;
+    line-height:50px;
+    }
+    table tr td:hover{
+    border-color:red;
+    z-index:12;
+    }
+    /*空心字*/
+    .kongxin{
+    color:white;
+    font-size:50px;
+    font-weight:bold;
+    text-shadow:
+    0px 0px 0.01em black,
+    0px 0px 0.01em black,
+    0px 0px 0.01em black,
+    0px 0px 0.01em black,
+    0px 0px 0.01em black,
+    0px 0px 0.01em black;
+    }
+    /*级联菜单*/
+    .menu{
+      position: relative;
+      z-index: 2;
+    }
+    ul{
+    list-style:none;
+    padding:0;
+    font-size:0px;
+    }
+    li{                /* 所有li显示为行内块，并且所有ul都要相对每一个li */
+    display:inline-block;
+    position:relative;
+    background-color:#E6EAED;
+    min-width:100px;
+    height:50px;
+    font-size:20px;
+    text-align:center;
+    line-height:50px;
+    }
+    .menu>li>ul{       /* 第二层 */
+    position:absolute;
+    left:0px;
+    top:100%;
+    }
+    li>ul>li>ul{      /* 大于第二层的嵌套 */
+    position:absolute;
+    left:100%;
+    top:0px;
+    }
+    li ul{
+    display:none;
+    }
+
+ /*  li:nth-child(1):before{
+     content:'>';
+     position: absolute;
+     color:red;
+     font-size: 30px;
+    left:80%;
+     top:50;
+    }*/
+
+li ul li{
+    background-color:white;
+    }
+    ul li:hover>ul{
+    display:block;
+    background-color:white;
+    box-shadow:2px 2px 5px 0.1px black;
+    }
+    li>ul>li:hover{
+    text-decoration:underline;
+    background-color:white;
+    cursor:pointer;
+    }
+    /*target选择器*/
+   :target{
+       background-color: yellow;
+    } 
+     /*为单行设置两端对齐*/
+    p:after{
+      content:'';
+      width:100%;
+      display: inline-block;
+      height: 0;
+    }
+    p{
+      text-align: justify;
+      margin-bottom: -15px;
+    }
+    a{
+      position: relative;
+    }
+    a:hover{
+      cursor: help;
+    }
+    a:after{
+       content: '';
+       transition:all 0.1s linear;
+    }
+    a:hover:after{
+     content: attr(href);
+     position:absolute;
+     top:10px;
+     background-color: #E6db74;
+     box-shadow: 1px 1px 1px 1px black;
+     border:1px #aaa solid;
+     border-radius: 10px;
+/*     z-index: 3;*/
+    }
+    </style>
+  </head>
+  <body>
+  <a href="#menu" >级联菜单</a><br>
+  <a href="#jiugongge">九宫格</a><br>
+  <a href="#kongxin">两端对齐的空心字</a><br>
+  <a href="#diyinput">自定义checkbox与radiobutton</a><br><br>
+    <ul class="menu"  id="menu">
+      <li><span>网络技术</span>
+      <ul>
+        <li><span>html</span></li>
+        <li><span>css</span>
+        <ul>
+          <li><span>111</span></li>
+          <li><span>222</span>
+          <ul>
+            <li><span>1111</span></li>
+            <li><span>2222</span>
+            <ul>
+              <li><span>11111</span></li>
+              <li><span>22222</span></li>
+              <li><span>33333</span></li>
+            </ul>
+          </li>
+          <li><span>3333</span></li>
+        </ul>
+      </li>
+      <li><span>333</span></li>
+    </ul>
+  </li>
+  <li><span>js</span></li>
+</ul>
+</li>
+<li><span>test</span>
+<ul>
+<li><span>11</span></li>
+<li><span>22</span>
+<ul>
+  <li><span>111</span></li>
+  <li><span>222</span>
+  <ul>
+    <li><span>1111</span></li>
+    <li><span>2222</span>
+    <ul>
+      <li><span>11111</span></li>
+      <li><span>22222</span></li>
+      <li><span>33333</span></li>
+    </ul>
+  </li>
+  <li><span>3333</span></li>
+</ul>
+</li>
+<li><span>333</span></li>
+</ul>
+</li>
+<li><span>33</span></li>
+</ul>
+</li>
+</ul><br><br>
+<div id="diyinput">
+<label>
+<input type="checkbox">
+<span role='checkbox'  aria-checked='false'></span>
+点我
+</label>
+&nbsp
+<label>
+男
+<input type="radio" name="sex">
+<span></span>
+</label>
+<label>
+女
+<input type="radio" name="sex">
+<span></span>
+</label>
+</div><br><br>
+<table  id="jiugongge"> <!-- cellspacing=0 -->
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</table>
+<p class="kongxin"  id="kongxin"> Lorem ipsum 我是幼圆 dolor sit amet.</p>
+</body>
+</html>

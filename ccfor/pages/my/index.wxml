@@ -1,0 +1,79 @@
+<modal modal-hidden="{{is_modal_Hidden}}"  modal-title="{{modal_Title}}" bindmodalSure="myevent"
+isConfirm="false"> 
+  <view class='wxdl'>
+    <i class="fa fa-comments-o" aria-hidden="true"></i> 
+    微信账号快速登录
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="tapGotUserInfo" plain="true"></button>
+  </view>
+</modal> 
+<import src="../../template/article/index.wxml" />
+
+
+<view class='content'>
+<view class='header-contain'>
+  <view class='header bg-main-color {{!isTop?"header-has":"header-no"}}'>
+     <view class='info-tx' wx:if="{{userInfo}}" >
+          <p style="background-image:url({{userInfo.avatarUrl}})" bindtap="tapsetInfo"></p>
+          <text bindtap="tapsetInfo">{{userInfo.nickName}}</text>
+     </view>
+     <view class='info-tx' wx:else>
+          <p></p>
+          <text bindtap="tapLogin">请登录</text>
+     </view>
+  </view>
+  <view class='bars bg-main-color' >
+      <view class='bar' catchtap='tapBar' data-name="loveBar">
+          <text class='num'>{{loveNum}}</text>
+          <text>喜欢的</text>
+      </view>
+      <view class='bar'  catchtap='tapBar' data-name="msgBar">
+          <text class='num'>{{msgNum}}</text>
+          <text>消息</text>
+      </view>
+      <view class='active' style="{{loveBar?'left:25%':'left:75%'}}"></view>
+  </view> 
+</view>
+ 
+
+  <!-- 后续需要
+  <view class='lis mod'>
+      <view class='li'>
+          <text class='fa fa-shopping-cart main-color'></text>
+          <text>购物车</text>
+      </view>
+      <view class='li'>
+          <text class='fa fa-file-text main-color'></text>
+          <text>订单</text>
+      </view>
+      <view class='li'>
+          <text class='fa fa-money main-color'></text>
+          <text>优惠券</text>
+      </view>
+      <view class='li'>
+          <text class='fa fa-cog main-color'></text>
+          <text>设置</text>
+      </view>
+  </view> -->
+  <view class='list mod {{isTop? "list-top":"list-bottom"}} ' wx:if="{{loveBar}}">
+    <block wx:for="{{articles}}" wx:key="{{index}}" wx:for-item="article"  >
+      <view class='two'>
+         <template is="articleTemp" data="{{...article,nopadding:true}}"/>
+      </view>
+    </block>
+    <view wx:if="{{currLovePage==allLovePage}}"  class='loading'>没有更多数据啦！</view> 
+  </view>
+  
+  <view class='list {{isTop? "list-top":"list-bottom"}}' wx:else>
+      <block wx:for="{{msgs}}" wx:key="{{index}}" wx:for-item="msg"  >
+          <view class='msg'>
+            <image src="{{msg.fromTx}}"></image>
+            <p class="right">
+                <text class='main-color'>{{msg.fromName}}</text>
+                <text class='msg-content'>{{msg.content}}</text>
+            </p>
+          </view>
+      </block> 
+      <view wx:if="{{currMsgPage==allMsgPage}}"  class='loading'>没有更多数据啦！</view> 
+  </view>
+  <view wx:if="{{reachBottom}}" class='loading'>加载中...</view>
+</view>

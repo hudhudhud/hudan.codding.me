@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	  /*实现0.5像素边框用scale,但实际还是1px,只是颜色变淡了*/
+		.border{
+			position: relative;
+		}
+		.border:before{
+			display: block;
+			content:"";
+			position: absolute;
+			border:1px solid;
+			transform: scale(0.5,0.5);
+			width: 200%;
+            height: 200%;
+            transform-origin:0 0;
+            box-sizing: border-box;
+		}
+		/*实现0.5像素边框直接把边框颜色改淡即可，因为好多不支持0.5px,会解析为0或1*/
+		.px{
+			border:1px solid #808080;
+			margin-top:10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="border">
+		<section>123</section>
+	</div>
+	
+	<div class="px">456</div>
+
+</body>

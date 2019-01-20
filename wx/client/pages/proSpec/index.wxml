@@ -1,0 +1,53 @@
+<view class='content'>
+  <view class="base-info">
+    <view class="pro">
+        <view class="img"><myimg src="{{img}}"></myimg></view>
+        <view class='info'>
+          <text>{{pro.name}}</text>
+          <text>{{specStr}}</text>
+          <text class='price'>{{pro.price}}元</text>
+        </view>
+    </view>
+    <view class='act' wx:if="{{pro.detail.activity}}">
+        <view class="left"><text>促销</text></view>
+        <view class='right'>
+            <block wx:for="{{pro.detail.activity}}">
+                <view class="detail">
+                    <text class="ac-title">{{item.title}}</text>
+                    <text >{{item.content}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+  </view>
+  <view class='spec'>
+     <block wx:for="{{pro.detail.spec}}">
+        <text class="spec-name">{{item.name}}</text>
+        <view class="spec-item">
+          <block wx:for="{{item.content}}" wx:for-item="spec">
+            <view  wx:if="{{spec.price&&spec.img}}"  class="val-pri {{chooseSpec[item.name]==spec.val?'active':''}}" 
+               bindtap='changeInfo' data-key="{{item.name}}" data-spec="{{spec}}">      
+                <text>{{spec.val}}</text>
+                <text class="pri">{{spec.price}}</text>
+            </view>
+            <view  wx:elif="{{spec.price}}"  class="val-pri {{chooseSpec[item.name]==spec.val?'active':''}}" 
+               bindtap='changeInfo' data-key="{{item.name}}" data-spec="{{spec}}">      
+                <text>{{spec.val}}</text>
+                <text class="pri">{{spec.price}}</text>
+            </view>
+            <text wx:elif="{{spec.img}}" class="val {{chooseSpec[item.name]==spec.val?'active':''}}" bindtap='changeInfo' data-key="{{item.name}}" data-spec="{{spec}}">{{spec.val}}</text>
+            <text wx:else class="val {{chooseSpec[item.name]==spec.val?'active':''}}" bindtap='changeInfo' data-key="{{item.name}}" data-spec="{{spec}}">{{spec.val}}</text>
+          </block>
+        </view>
+     </block>
+     <view class="num">
+       <text class="left">购买数量</text>
+       <view class="right">
+          <text bindtap="minusNum" class="btn minus {{num==1?'disable':''}}">-</text>
+          <text>{{num}}</text>
+          <text bindtap='addNum'  class="btn add {{num==pro.maxNum?'disable':''}}">+</text>
+        </view>
+     </view>
+  </view>
+  <view class="commit" bindtap="addCar">确定</view>
+</view>

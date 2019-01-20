@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>to</title>
+</head>
+<body>
+收到消息：<span id="message"></span>
+</body>
+</html>
+<script type="text/javascript">
+var origin="http://192.168.0.103:8000"
+var eleBox = document.querySelector("#message")
+var messageHandle = function(e){ 
+	if(e.origin==origin)
+    	eleBox.innerHTML=e.data
+}
+if(window.addEventListener){
+    // 接受信息
+    window.addEventListener("message", messageHandle)
+}
+else if (window.attachEvent) {
+    // 接受信息，兼顾IE8之流
+    window.attachEvent('onmessage', messageHandle)
+}
+</script>

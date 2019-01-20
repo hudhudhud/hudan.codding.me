@@ -1,0 +1,23 @@
+.topNavbar{
+  position: fixed;
+  z-index: 9999;
+  top:0;
+  left:0;
+  width:100%;
+  height: 60rpx;
+  background-color: white;
+  font-size:.8rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding:0 20rpx;
+}
+.topNavbar text{
+  display: inline-block;
+  padding:4rpx;
+  xmargin-right: 90rpx;
+}
+.topNavbar text.active{
+  border-bottom-width: 6rpx;
+  border-bottom-style: solid;
+}

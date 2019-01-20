@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bootstrap table</title>
+		<!-- <link rel="stylesheet/less" type="text/css" href="styles.less" /> -->
+		<style type="text/less">
+		 .border{
+			border-bottom:1px solid #ddd;
+		}
+		.table{
+			border-collapse:collapse;
+		         tr{
+			    .border;
+			    th{
+				padding:10px;
+				text-align:left;
+			      }
+			    td{
+			    	text-align:left;
+			    	padding:10px;
+			    	&:first-child{
+				     width:50px;
+				     text-align:left;
+			              }
+			              &:not(:first-child){
+				     width:200px;
+				}
+			      }
+			   &:first-child{
+				border-bottom-width:2px;
+			    }
+			 }
+			
+		}
+		.table-striped{
+			 tbody{
+			 	> tr:nth-child(2n+1){
+				 	background-color:  #F9F9F9;;
+			       }
+		    }
+		}
+		.table-bordered{
+			th,td{
+				border:1px solid #ddd;
+			}
+		} 
+		.table-hover{
+			tr{
+				&:not(:first-child):hover{
+					background-color: #F9F9F9;
+				}
+			}
+		}
+		.table-condensed{
+			tr{
+				td{
+				padding: 5px;
+				}
+			}
+		}
+		.active{
+			background-color: #f5f5f5;
+		}
+		.warning{
+			background-color: #f2dede;
+		}
+		</style>
+	</head>
+	<body>
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+			      <tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Nam</th>
+				<th>Username</th>
+			      </tr>
+			</thead>
+			<tr>
+				<td>1</td>
+				<td>Mark</td>
+				<td>otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Thornton</td>
+				<td>Jacob</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Larry</td>
+				<td>the Bird</td>
+				<td>@twitter</td>
+			</tr>
+		</table>
+		<script src="less.min.js"></script>
+	</body>
+</html>

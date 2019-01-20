@@ -1,0 +1,14 @@
+<import src="../../template/article/index.wxml" />
+<import src="../../template/topNavbar/index.wxml" />
+
+<template is="topNavbarTemp" data="{{catgs,catgIndex,barDis}}"/>
+<view class='content hastopbar'>
+<view class="list clearfix {{catgs[catgIndex].show==2?'mod':'mod-bak'}}">
+    <block wx:for="{{articles}}" wx:key="{{index}}">
+      <view wx:if="{{catgs[catgIndex].id==item.catg}}" class="{{catgs[catgIndex].show==2?'two':''}}">
+          <template  is="articleTemp" data="{{...item,nopadding:catgs[catgIndex].show==2,styleTx:catgs[catgIndex].show==2?'minitx':''}}" 
+           />
+      </view>
+    </block>
+</view>
+</view>

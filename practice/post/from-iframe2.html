@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>from</title>
+</head>
+<body>
+	<form>
+		<input type="text">
+		<input type="submit">
+		<p id="from_info"></p>	
+	</form>
+</body>
+</html>
+<script type="text/javascript">
+var origin="http://192.168.0.103:8000"
+var eleForm = document.querySelector("form"), port
+eleForm.onsubmit = function(){
+    var message = document.querySelector("input[type='text']").value
+    if (port === undefined) {
+        alert('no port')
+    } else {
+    	console.log(port,"from")
+        port.postMessage(message)
+    }
+    return false    
+}
+window.addEventListener('DOMContentLoaded', function(e){
+    window.addEventListener('message', function(evt){
+        // 扩大端口范围
+        if (evt.origin == origin) {
+            port = evt.ports[0]
+        } else {
+            alert(evt.origin +'no support')
+        }    
+        document.getElementById("from_info").innerHTML+=evt.data
+    })
+    window.parent.postMessage('from has loaded;', origin)
+})
+</script>

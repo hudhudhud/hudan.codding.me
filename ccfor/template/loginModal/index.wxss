@@ -1,0 +1,21 @@
+.wxdl{
+  width:80%;
+  padding:20rpx 0;
+  margin:auto;
+  text-align: center;
+  background-color:#1aac19;
+  color:#fff;
+  font-size: .8rem;
+  border-radius: 10rpx;
+  margin-top:0rpx;
+  line-height: 1em;
+  position:relative;
+}
+ button{
+  position:absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width:100%;
+  display: inline-block;
+} 

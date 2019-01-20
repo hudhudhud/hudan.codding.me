@@ -1,0 +1,45 @@
+<view class='content'>
+  <view class='header bg-main-color'>
+     <view class='tx'>
+        <p style="background-image:url({{userInfo.avatarUrl}})"></p>
+        <text bindtap="tapChangeImg">点击更换头像</text>
+     </view>     
+  </view>
+  <form bindsubmit="formSubmit" class='mod-bak'>
+    <view class='item'>
+      <label class='left'>昵称</label>
+      <input class='right' placeholder='输入昵称' name="nickName" value="{{userInfo.nickName}}" ></input>
+    </view>
+    <view class='item'>
+      <label class='left'>性别</label>
+      <picker class='right'  mode="selector" name="gender" range="{{sex}}" range-key='name' value="{{defaultSexIndex}}"
+      bindchange="bindSexPickerChange" >
+        <view>
+        {{defaultSexIndex==-1? "点击选择性别":sex[defaultSexIndex].name}}
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+        <label class='left'>手机号</label>
+        <input class='right' placeholder='输入手机号' name="phone" value="{{userInfo.phone}}"></input>
+    </view>
+    <view class='item'>
+          <label class='left'>所在地</label>
+          <picker class='right'  mode="region" name="address"  bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view>
+               {{region.length>0?region[0]+","+region[1]+","+region[2]:"点击选择地址"}}
+            </view>
+          </picker>
+    </view>
+    <view class='item'>
+        <label class='left'>出生日期</label>
+        <picker class='right'  mode="date" name="birth" value="{{birth}}" start="1900-01-01"  bindchange="bindDateChange">
+          <view>
+            {{birth?birth:"点击选择时间"}}
+          </view>
+        </picker>
+    </view>
+    <button formType="submit" class='save bg-main-color' >保存</button>
+  </form>
+</view>
+

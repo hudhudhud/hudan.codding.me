@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "购物车",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+      "modal": "../../custom-component/modal/index",
+      "myimg": "../../custom-component/myimg/index"
+    }
+}

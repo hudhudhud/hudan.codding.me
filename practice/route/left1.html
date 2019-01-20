@@ -1,0 +1,32 @@
+<style type="text/css">
+	.current{
+		background-color: rgba(0,0,0,0.5)
+	}
+	li ul{
+		xdisplay: none;
+		position: relative;
+		left:20px;
+		top:0;
+	}
+</style>
+<ul>
+	<li><a href="one.html">1</a>
+		<ul>
+			<li><a href="one1.html">11</a></li>
+			<li><a href="one2.html">12</a></li>
+		</ul>
+	</li>
+	<li><a href="two.html">2</a>
+		<ul>
+			<li><a href="two1.html">21</a></li>
+			<li><a href="two2.html">22</a></li>
+		</ul>
+	</li>
+	<li><a href="three.html">3</a></li>
+</ul>
+<div class="left"></div>
+<div class="content"></div>
+<script type="text/javascript" src="jquery.pjax.js"></script>
+<script type="text/javascript">
+	$(document).pjax('a', '.content')
+</script>

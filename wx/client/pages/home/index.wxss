@@ -1,0 +1,90 @@
+/**index.wxss**/
+@import "../template/tabbar.wxss";
+@import "../template/searchBar.wxss";
+page{
+  width:100%;
+  height:100%;
+  background-color: #ebebeb;
+}
+.content{
+  width:100%;
+  height:100%;
+}
+.swiper {
+  height: 400rpx;
+  width: 100%;
+  margin-top:100rpx;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.pro-list{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:100%;
+  box-sizing: border-box;
+  padding-top:5rpx;
+  margin-top:10rpx;
+  background-color:white;
+}
+.pro{
+ width:50%;
+ height: 500rpx;
+ display: flex;
+ flex-direction: column;
+ box-sizing: border-box;
+}
+.pro:nth-child(2n+1){
+  padding-right:0.5%;
+}
+.pro image{
+  width:100%;
+  min-height:350rpx;
+}
+.pro .pro-info{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-left:20rpx;
+  padding-top:15rpx;
+  font-size:26rpx;
+}
+.pro .pro-info .pro-name{
+  font-size:30rpx;
+}
+.pro .pro-info .pro-desc{
+  color:#bcbcbc;
+}
+.pro .pro-info .pro-price:before{
+  content:"\A5";
+  color:#ff6801;
+}
+.pro .pro-info .pro-price{
+  color:#ff6801;
+  font-size:30rpx;
+}
+.loading{
+  width:100%;
+  font-size:30rpx;
+  text-align:center;
+  color:gray;
+}
+.modal-search{
+  width:100%;
+  height: 80rpx;
+  position: relative;
+}
+.modal-search input{
+  padding:10rpx;
+  width:80%;
+  height: 80rpx;
+  border:1px solid #bcbcbc;
+  box-sizing: border-box;
+  position:absolute;
+  margin:auto;
+  left:0;
+  right: 0;
+  text-align: left;
+}

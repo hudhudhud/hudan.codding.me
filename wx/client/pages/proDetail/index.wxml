@@ -1,0 +1,58 @@
+<view class='content'>
+  <swiper indicator-dots="true" class='swiper'>
+    <block wx:for="{{pro.detail.imgList}}" wx:key="{{pro.id}}">
+      <swiper-item>
+        <myimg src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='info'>
+    <text class="name">{{pro.name}}</text>
+    <text class="desc">{{pro.desc}}{{pro.detail.desc}}</text>
+    <text class="price">{{pro.price}}</text>
+  </view>
+  <view class="oth-info" >
+    <view class='pro-info act' wx-if="{{pro.detail.activity}}">
+      <view class="left"><text>促销</text></view>
+      <view class='right'>
+          <block wx:for="{{pro.detail.activity}}">
+              <view class="detail">
+                  <text class="ac-title">{{item.title}}</text>
+                  <text >{{item.content}}</text>
+              </view>
+          </block>
+      </view>
+    </view>
+    <view class='pro-info spec' bindtap='goSpec' >
+      <view class="left"><text>已选</text></view>
+      <view class='right'>
+          <view class="detail">
+              <block wx:for="{{chooseSpec}}">
+                  <text>{{item.content}}</text>
+              </block>
+              <text class="num">x{{chooseNum}}</text>
+          </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="user-eval">
+    <text>用户评价（{{eval-num}}）</text>
+    <text>查看全部评价</text>
+  </view>
+  <view class="detail-info">
+    <text>概述</text>
+    <text>图集</text>
+    <text>参数</text>
+  </view> -->
+
+  <view class='foot-btns'>
+     <view class="car" bindtap='goCar'>
+        <myimg src="shoppingcar.png"></myimg>
+        <block wx:if="{{carNum}}">
+          <text class='num'>{{carNum}}</text>
+        </block>
+     </view>
+      <text class='addCar' bindtap='goSpec'>加入购物车</text>
+      <text class="buy" bindtap='goBuy'>立即购买</text>
+  </view>
+</view>

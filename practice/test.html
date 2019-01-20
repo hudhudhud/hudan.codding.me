@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	var data=new Date()
+
+	</script>
+	<style type="text/css">
+	  /*实现0.5像素边框用scale,但实际还是1px,只是颜色变淡了*/
+		.border{
+			position: relative;
+		}
+		.border:before{
+			display: block;
+			content:"";
+			position: absolute;
+			border:1px solid;
+			transform: scale(0.5,0.5);
+			width: 200%;
+            height: 200%;
+            transform-origin:0 0;
+            box-sizing: border-box;
+		}
+		/*实现0.5像素边框直接把边框颜色改淡即可，因为好多不支持0.5px,会解析为0或1*/
+		.px{
+			border:1px solid #808080;
+			margin-top:10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="border">
+		<section>123</section>
+	</div>
+	
+	<div class="px">456</div>
+<!-- <a href="javascript:window.open('about:blank')">123</a> -->
+<a href="javascript:data.toLocaleString()">123</a>
+<a href="javascript:void data.toLocaleString()">void 123</a>
+<!-- bookmarklet -->
+<a href='javascript:
+	var e="",r="",result=0;
+	do{
+		e=prompt("expression:"+e+"\n"+r+"\n",e);
+		result+=e-"";
+		try{r="result:"+eval(result);}
+		catch(ex){r=ex;}
+	}while(e);
+	void 0	/*用以防止点击后页面被覆盖*/
+'>321</a>
+</body>
+<script type="text/javascript">
+	function onLoad(f){
+		if(onLoad.loaded)
+			window.setTimeout(f,0)
+		else if(window.addEventListener)
+			window.addEventListener("load",f,false)
+		else if(window.attachEvent)
+			window.attachEvent("onload",f)
+	}
+	onLoad.loaded=false
+	onLoad(function(){onLoad.loaded=true;console.log(1)})
+</script>
+</html>

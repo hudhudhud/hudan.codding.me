@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name=viewport content="width=device-width,initial-scale=1" >
+	<style type="text/css">
+		html,body{
+			width:100%;
+			height: 100%;
+			margin:0;
+			padding:0;
+			position:relative;
+		}
+		.txt{
+			position:absolute;
+			left:80%;
+			top:-10%;
+			color:red;
+			font-size:18px;
+		}
+		.txtA{
+			/*top: 10%;
+			transition: all 0.1s ease-in;*/
+			animation:df 1s 2;
+			animation-timing-function:cubic-bezier(0,0,2,1);/*ease-out;*/
+			animation-direction:alternate;
+			display: block;
+			width:40px;
+			height: 20px;
+			background-color: #F1e599;
+			border-radius: 5px;
+			text-align: center;
+		}
+		@keyframes df{
+			0%{
+				top:-10%;
+			}
+			80%{
+				top:8%;
+			}
+			100%{
+				top:10%;
+			}
+		}
+    @keyframes sj{
+      0%{
+        transform: scale(1.5);
+        transform-origin:center;
+      }
+      80%{
+        transform: scale(2);
+       transform-origin:center;
+      }
+      100%{
+        transform: scale(1);
+        transform-origin:center;
+      }
+    }
+		#dang{
+			position: fixed;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			color:white;
+			background-color: rgba(0,0,0,1);
+			z-index: 9999;
+		}
+		#dang span{
+      text-align: center;
+			font-size:5rem;
+			position: absolute;
+			top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      margin:auto;
+      width: 100px;
+      height: 100px;
+      animation:sj 1s 1;
+      color:#e6bf4d;
+		}
+	</style>
+  <script type="text/javascript">
+    (new Array(13).fill(1).forEach((item,i)=>{
+      var img=new Image()
+      img.src=`./img/${i+1}.jpg`
+    }))
+  </script>
+</head>
+<body>
+<img src="" alt="" id="yuan" style="width:100%;height: 100%">
+<span id="txt" class="txt">sabi</span>
+<audio  id="aud" autoplay>
+<source src="pfzl.mp3">
+您的浏览器不支持 audio 元素。
+</audio>
+<div id="dang"><span></span></div>
+</body>
+<script type="text/javascript">
+
+var img=document.getElementById("yuan")
+var txt=document.getElementById("txt")
+var aud=document.getElementById("aud")
+var dang=document.getElementById("dang")
+i=1
+sort=1
+function f(){
+	  txt.classList.remove("txtA")
+	  id=setInterval(function(){
+		  img.setAttribute("src",`./img/${i}.jpg`)
+		  if(i<14&&sort)i++
+		  if(!sort)i--
+		  if(i==14){
+		  	txt.classList.add("txtA")
+		  	clearInterval(id)
+		  	sort=0
+		  	i--
+		  	setTimeout(f,2000)
+		  }
+		  if(i==1){
+		  	sort=1
+		  	i++
+		  }
+		},500)
+}
+document.body.addEventListener("touchstart",play)
+function play() {
+	dang.remove()
+	if(aud.paused)
+		  	aud.play()
+   f()
+}
+var time=5
+var tick=5
+id=setInterval(function(){
+    dang.innerHTML=`<span>${tick}</span>`
+    tick--
+    if(tick<0){
+      clearInterval(id)
+      dang.innerHTML="<span>点我</span>"
+    }
+  },1000)
+</script>
+</html>

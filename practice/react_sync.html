@@ -1,0 +1,65 @@
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import Hello from './Hello';
+import './style.css';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '321',
+    };
+  }
+
+  async asyncTest(){
+      var a= await (new Promise((res,rej)=>{
+        setTimeout(res.bind(null,1),1000)
+      }))
+      var b= await (new Promise((res,rej)=>{
+        setTimeout(res.bind(null,2),1000)
+      }))
+      var c= await (new Promise((res,rej)=>{
+        setTimeout(res.bind(null,3),1000)
+      }))
+
+      //var res=await fetch("https://stackblitz.com").then()
+
+      this.setState({
+          name:a+b+c,
+      })
+  }
+
+ syncTest(){
+     var a,b,c;
+      new Promise((res,rej)=>{
+        setTimeout(res.bind(null,10),1000)
+      }).then(res=>{a=res})
+
+      new Promise((res,rej)=>{
+        setTimeout(res.bind(null,20),1000)
+      }).then(res=>{b=res})
+
+      new Promise((res,rej)=>{
+        setTimeout(res.bind(null,30),1000)
+      }).then(res=>{c=res})
+
+      setTimeout(()=>{
+        this.setState({
+            name:a+b+c
+        })
+      },1000)
+  }
+  render() {
+    return (
+      <div>
+        <Hello name={this.state.name} />
+        <input type="button"  value="我是同步的，我需要1s哦" onClick={this.syncTest.bind(this)}/>
+        <br/>
+        <input type="button"  value="我是异步的，我需要3s哦" onClick={this.asyncTest.bind(this)}/> 
+        <br/>
+      </div>
+    );
+  }
+}
+
+render(<App />, document.getElementById('root'));

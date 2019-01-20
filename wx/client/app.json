@@ -1,0 +1,59 @@
+{
+  "pages":[
+    "pages/home/index",
+    "pages/proList/index",
+    "pages/proDetail/index",
+    "pages/proSpec/index",
+    "pages/catg/index",
+    "pages/login/index",
+    "pages/my/index",
+    "pages/shoppingCar/detail/index",
+    "pages/shoppingCar/index"
+    
+  ],
+  "window":{
+    "backgroundColor":"#ebebeb", 
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "MI",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance":200
+  },
+  "tabBar": {
+    "color": "#2177c7",
+    "selectedColor": "#ff6801",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "home",
+        "iconPath": "/pages/img/home.png",
+        "selectedIconPath": "/pages/img/home1.png"
+      },
+      {
+        "pagePath": "pages/catg/index",
+        "text": "cate",
+        "iconPath": "/pages/img/catg.png",
+        "selectedIconPath": "/pages/img/catg1.png"
+      }
+      ,
+      {
+        "pagePath": "pages/shoppingCar/index",
+        "text": "shoppingCar",
+        "iconPath": "/pages/img/shoppingcar.png",
+        "selectedIconPath": "/pages/img/shoppingcar1.png"
+      }
+      ,
+      {
+        "pagePath": "pages/my/index",
+        "text": "mine",
+        "iconPath": "/pages/img/my.png",
+        "selectedIconPath": "/pages/img/my1.png"
+      }
+    ]
+  },
+  "debug":true
+  
+}

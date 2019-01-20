@@ -1,0 +1,74 @@
+<style type="text/css">
+	.current{
+		background-color: rgba(0,0,0,0.5)
+	}
+	li ul{
+		xdisplay: none;
+		position: relative;
+		left:20px;
+		top:0;
+	}
+</style>
+<ul>
+	<li><span src="one.html">1</span>
+		<ul>
+			<li><span src="one1.html">11</span></li>
+			<li><span src="one2.html">12</span></li>
+		</ul>
+	</li>
+	<li><span src="two.html">2</span>
+		<ul>
+			<li><span src="two1.html">21</span></li>
+			<li><span src="two2.html">22</span></li>
+		</ul>
+	</li>
+	<li><span src="three.html">3</span></li>
+</ul>
+
+<script type="text/javascript">
+	var li=$("ul li")
+	var span=li.find("span")
+	$(function(){
+		var pathname=location.pathname.replace("/","")
+		if(pathname){
+			changeState(pathname)
+			return
+		}
+		var url="one.html"
+		history.replaceState(url,"",url)
+		loadHtml(url)
+	})
+	span.on("click",function(){
+		if($(this).next("ul")){
+			$(this).next("ul").toggle()
+		}
+		var src=$(this).attr("src")
+		console.log(src)
+		history.pushState(src,"",src)
+	    loadHtml(src)
+	})
+	window.onpopstate=function(){
+		loadHtml(history.state)
+	}
+	function changeState(url){
+		span.removeClass("current")
+		span.each(function() {
+		if($(this).attr("src")==url){
+				$(this).addClass("current")
+				return false
+			}
+		})
+	}
+	function loadHtml(url){
+	    $(".content").load(url+" .content,.foot",function(data){//有选择器不会执行js；若无选择器，则先加载html，再执行其内js，但不会加js代码；
+	    	$(data).each(function() {
+	    		if(this.nodeName.toLocaleLowerCase() ==="script"){
+	    			if($(this).attr("src")!="common.js")
+	    			  $(".content").append($(this))
+	    		}
+	    	})
+	   		
+	    })
+	    changeState(url)
+	}
+</script>

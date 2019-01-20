@@ -1,0 +1,8 @@
+  <template name="searchBar">
+    <view class="search" >
+        <image src='../template/img/search.png' class="img-search"  bindtap='bindconfirm'></image>
+        <input type="text" placeholder="search" bindinput="bindKeyInput"   value="{{searchValue}}" bindtap="bindtab" auto-focus='{{autoFocus}}' 
+            disabled="{{disabled}}" bindconfirm="bindconfirm"></input>
+        <image src='../template/img/clear.png' class="img-clear" bindtap='bindClear'></image>
+    </view>
+  </template>

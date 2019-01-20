@@ -1,0 +1,8 @@
+<modal modal-hidden="{{is_modal_Hidden}}"  modal-title="{{modal_Title}}" bindmodalSure="myevent"
+isConfirm="false"> 
+  <view class='wxdl'>
+    <i class="fa fa-comments-o" aria-hidden="true"></i> 
+    微信账号快速登录
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="tapGotUserInfo" plain="true"></button>
+  </view>
+</modal> 

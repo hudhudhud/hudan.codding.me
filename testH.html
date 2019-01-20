@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testH</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="red" />
+
+	<style type="text/css">
+	/*有头没尾或有头有尾或无头有尾都ok*/
+		html,body{
+			margin:0;
+		}
+		body *{
+			background-color: rgba(0,0,0,0.1);
+		}
+		body {
+		  position: fixed;
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		}
+		header,footer{
+			background-color:pink;
+			height: 50px;
+			text-align: center;
+			position: fixed;
+			width:100%;
+			z-index:99;
+		}
+		header{
+			top:0;
+		}
+		footer{
+			bottom:0;
+		}
+		.content{
+			position: absolute;
+			width:100%;
+			background-color: green;
+			-webkit-overflow-scrolling:touch;
+			top: 0;
+		  	right: 0;
+		  	bottom: 0;
+		  	left: 0;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			padding-top:50px;
+			padding-bottom:50px;
+		}
+		.content input{
+			height: 40px;
+			width:400px;
+		}
+	</style>
+</head>
+<body>
+	<header>i m header</header>
+	<div class="content">
+		输入：<input type="text">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad totam neque eveniet earum officia tempora, deserunt incidunt maiores nam fuga? Fugiat dolorum aut ex harum impedit nobis sapiente iure architecto qui ducimus ab, eius esse molestiae commodi officiis laudantium aperiam quaerat error ut nostrum eum. Molestiae reiciendis dolorem eum, veritatis a in, odio qui totam aut iste recusandae temporibus delectus. Doloremque porro fuga pariatur omnis quae totam ipsa ducimus expedita id dolor explicabo quam ratione, fugit, corporis optio culpa est at dignissimos facilis perferendis modi placeat. Impedit, dolorum! Ipsum expedita eaque enim! Qui id, eius aliquid facere quis omnis ea rem. Magni quaerat corporis consequatur porro quidem odit vitae ipsum facilis suscipit error vel incidunt similique explicabo perspiciatis omnis numquam illum, dolore, cum reiciendis dolor at consectetur. Rem maxime amet et praesentium esse eos incidunt! Beatae similique debitis, magnam quasi soluta harum earum, id quam voluptatibus facere amet adipisci aperiam velit doloribus, deserunt incidunt laudantium nisi quibusdam excepturi natus illum aspernatur exercitationem quisquam. Ad odit nam maiores provident ut iure error suscipit expedita nisi impedit, voluptas eius repellat magni optio aut commodi laudantium animi. Praesentium neque eligendi labore reprehenderit minus rerum esse eius reiciendis molestiae error adipisci illo ratione architecto dolorem, asperiores incidunt facere quam nihil quasi soluta! Optio possimus dolores nemo cumque natus magnam autem nisi incidunt totam ad vitae, eius illo recusandae non, aut omnis dicta numquam maxime ab aliquid? Error suscipit tenetur, architecto unde optio eligendi, fuga quas illum incidunt deserunt quis quaerat, porro modi. Officiis unde esse ratione quia totam qui alias non beatae commodi ex perferendis quis dolore dolor, quos earum. Dicta, quae est. Id reiciendis ut mollitia eum soluta pariatur quasi temporibus, iusto. Eos debitis aut nam voluptatum voluptates minima eum accusantium odio, repellat! Explicabo, aperiam voluptate, in sit, officiis unde dolor ullam recusandae ab mollitia laudantium consequatur aut omnis iusto temporibus, similique quaerat. Porro quos, vel, nesciunt tempore placeat ex quasi neque dicta aperiam tenetur veniam, unde voluptatibus est autem delectus asperiores nulla eum debitis dolore voluptas repudiandae suscipit nemo laborum fugiat cupiditate? Fuga saepe, alias, ipsa, molestiae perspiciatis voluptatem pariatur iste blanditiis rem nulla laudantium. Aut quae harum modi laborum asperiores itaque fugiat laudantium reprehenderit consectetur, ea nam voluptates voluptatum cumque obcaecati, autem, quia placeat dolorum dignissimos officiis nulla! Autem quod dolor assumenda asperiores temporibus, quae perferendis sed earum repudiandae harum odio molestiae neque esse cupiditate velit modi quas facere, maxime ipsa.
+		</p>
+	</div>
+	<footer>i m footer</footer>
+</body>
+</html>

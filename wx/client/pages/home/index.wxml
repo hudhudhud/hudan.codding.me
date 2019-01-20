@@ -1,0 +1,32 @@
+<import src="../template/searchBar.wxml" />
+
+<modal modal-hidden="{{is_modal_Hidden}}"  modal-title="{{is_modal_Title}}" bindmodalSure="myevent"> 
+  <view class='modal-search'><input type="text"  value="{{search_val}}"  bindinput="bindModalInput"/></view>
+</modal> 
+<view class='content'>
+    <template is="searchBar" data="{{disabled}}" />
+    <view class="loading" wx:if="{{reachTop}}"><text>----我是有上线的----</text></view>
+    <swiper class="swiper" indicator-dots='{{swiper.dots}}' indicator-color='{{swiper.color}}' indicator-active-color='{{swiper.activeColor}}' autoplay='{{swiper.autoplay}}' interval='{{swiper.interval}}'  circular="{{swiper.circular}}">
+        <block wx:for="{{swiper.imgUrls}}" wx:key="{{index}}">
+          <swiper-item >
+              <myimg src="{{item}}" ></myimg>
+          </swiper-item>
+        </block>
+    </swiper>
+    <view class="pro-list">
+        <block wx:for="{{proList}}" wx:key="{{index}}">
+          <view class='pro' bindtap='goDetail' data-id="{{item.id}}">
+            <myimg src="{{item.img}}"></myimg>
+            <view class='pro-info'>
+              <text class="pro-name">{{item.name}}</text>
+              <text class="pro-desc">{{item.desc}}</text>
+              <text class="pro-price">{{item.price}}</text>
+            </view>
+          </view>
+        </block>
+    </view>
+    <view class="loading" wx:if="{{reachBottom}}"><text>加载中...</text></view>
+</view>
+
+ <!-- <import src="../template/tabbar.wxml" />
+<template is="tab-bar" data="{{jhDataForTabbar}}" />  -->

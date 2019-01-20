@@ -1,0 +1,152 @@
+ page{
+  width:100%;
+  height: 100%;
+  background-color: #ebebeb;
+  font-size:30rpx;
+} 
+.content{
+  width:100%;
+  height: 100%;
+  position: relative;
+}
+.carList{
+  padding-top:20rpx;
+  width:100%;
+  box-sizing: border-box;
+  font-size:22rpx;
+}
+.item{
+  width:110%;
+  height: 100rpx;
+  border-bottom: 1rpx solid #ebebeb;
+  background-color: white;
+  line-height: 100rpx;
+  padding-left:20rpx;
+  box-sizing: border-box;
+}
+.item .right .remove{
+  margin-left:20px;
+  background-color:red;
+  color:white;
+  display: inline-block;
+  height: 100%;
+  padding-left:10rpx;
+  padding-right: 10rpx;
+  box-sizing: border-box;
+  margin-right: 0;
+}
+.item .left {
+  float:left;
+}
+.left image{
+  width:60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+}
+.item .right{
+  float: right;
+}
+.item.delete{
+ margin-left:-10%;
+}
+.clearfl:after{
+  content:"";
+  display: block;
+  clear:both;
+}
+.right .num{
+  color:#a6a6a6;
+}
+.right .price{
+  color:#ff6801;
+}
+.all{
+  padding-left:50rpx;
+  width:100%;
+  height: 102rpx;
+  line-height: 100rpx;
+  position: absolute;
+  bottom:0;
+  background-color: white;
+  box-sizing: border-box;
+}
+.all .allMoney{
+  position: absolute;
+  right: 250rpx;
+  padding-right:20rpx;
+}
+.all .allMoney text{
+  color:#ff6801;
+}
+.submit{
+  display: block;
+  height: 100rpx;
+  line-height: 100rpx;
+  width:250rpx;
+  text-align: center;
+  background-color: #ff6801;
+  float:right;
+  color:white;
+}
+.submit.disable{
+  background-color: rgba(0,0,0,0.5);
+}
+
+.checkbox{
+  width:15px;
+  height:15px;
+  display: inline-block;
+  border:1px solid #ebebeb;
+  border-radius: 50%;
+  background-color:white;
+  position: relative;
+  transition: background-color 0.1s linear;
+  top:5px;
+}
+.checkbox image{
+  display: none;
+}
+.checkbox.checked{
+   background-color:#ff6801; 
+}
+.checkbox.checked image{
+  display: inline-block;
+  position:absolute;
+  width:10px;
+  height:10px;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.checkbox.checkboxAll{
+  margin-right: 10rpx;
+}
+.no-pro text{
+   display: block;
+   text-align: center;
+   font-size:40rpx;
+   margin:auto;
+   margin-top:60rpx;
+}
+.go_mi{
+  width:80%;
+  height: 100rpx;
+  background-color:#ff6801;
+  line-height: 100rpx;
+  color:white;
+}
+.car_img{
+  width:200rpx;
+  height: 200rpx;
+  background-color:#d3d3d3;
+  border-radius:100rpx;
+  margin:auto;
+  line-height: 200rpx;
+  text-align: center;
+  margin-top:30px;
+}
+.car_img image{
+  width:150rpx;
+  height: 150rpx;
+  vertical-align: middle;
+}

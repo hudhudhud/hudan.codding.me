@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/style.css" type="text/css" />
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/comment-style.css" type="text/css" />
+<style type="text/css">
+  html,body{
+    background: none;
+    background-color: #F9F2E2;
+  }
+</style>
+</head>
+<body>
+  
+</body>
+<script src="jquery.min.js"></script>
+ <script src="https://cdn1.lncld.net/static/js/3.2.0/av-min.js"></script>
+<script>
+var APP_ID = '1UHv40hnphEODjDaa7eOWR2q-gzGzoHsz';
+var APP_KEY = 'YNbTneQAz6RVilCPMTlJyF1N';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
+var currentPage=1
+GetData()
+$(function(){
+   var loading=false
+   history.pushState("1","",location.href)
+   function wheelEvent(){
+      if(loading){
+        return
+      }
+      var scrollPos=window.scrollY
+      var viewportHeight=window.innerHeight
+      var pageHeight=document.documentElement.scrollHeight
+      var vals=Math.abs(scrollPos+viewportHeight-pageHeight)
+      if(vals<2){
+        loading=true
+        var loadingText=$('<footer style="font-size:20px;font-weight:bold">努力加载中...</footer>').appendTo(document.body)
+        GetData(()=>{loadingText.remove();loading=false})
+      }
+   }
+   window.onpopstate=function(){
+    if(history.state=="1"){
+      currentPage=1
+      $("body").html("")
+      GetData()
+      $(window).on('mousewheel scroll',wheelEvent)
+    }
+   }
+   
+   $(window).on('mousewheel scroll',wheelEvent)
+
+   $("body").on("click","a",function(e){
+        history.pushState("1","",location.pathname+"?title="+$(this).prop("m").match(/http:\/\/ifeve.com\/(.+)?\//)[1])
+        $(window).off('mousewheel scroll',wheelEvent)
+        $("body")
+        .html(
+          $("<div class='post'>")
+        .load(`${this.m} .post h2,.post h3,.post p:not(last-child)`,function(){
+         
+            $("a","p").each(function(){
+              if(this.href=="http://pro.badouxueyuan.cn/ifeve/")
+              $(this).remove()
+              
+           })
+            // var a=this.outerHTML
+            // var title=$(".title")[0];
+            // var id=
+            // console.log(title)
+
+
+            
+            //  // 第一个参数是 className，第二个参数是 objectId
+            // AV.Query.doCloudQuery(`update Article set content='${a}' where objectId="59bba3f8570c35006e68b799"`)
+            // .then(function (data) {
+            //   // data 中的 results 是本次查询返回的结果，AV.Object 实例列表
+            //   console.log(title);
+            // }, function (error) {
+            //   // 异常处理
+            //   console.error(error);
+            // });
+          }
+        ))
+        e.preventDefault()
+    })
+})
+
+
+function GetData(cb){
+  return new Promise(function(resolve,reject){
+       $('<div>').load(`http://ifeve.com/page/${currentPage}/ .title`,function(content,statuCode,req){
+        if(statuCode="sucess"){
+          resolve($(this))
+        }
+        else{
+          reject()
+        }
+    })
+  }).then(data=>{
+    setTimeout(()=>{
+       if(cb)cb()
+        currentPage++
+        data.appendTo('body')
+
+        data.find("a").each(function(){
+          // var text=this.innerText
+          
+          // var TestObject = AV.Object.extend('Article');
+          // var testObject = new TestObject();
+          // testObject.save({
+          //   title: text,
+          //   content: ""
+          // }).then(function(object) {
+          //   console.log(text);
+          // })
+
+          this.m=this.href;
+          this.href=""
+        })
+    },800)
+  })
+}
+</script>
+</html>

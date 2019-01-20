@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>to</title>
+</head>
+<body>
+收到消息：<span id="message"></span>
+<p id="to_info"></p>
+</body>
+</html>
+<script type="text/javascript">
+var origin="http://192.168.0.103:8000"
+var eleBox = document.querySelector("#message")
+
+window.addEventListener('DOMContentLoaded',function(){
+    if (window.MessageChannel){
+        // 创建一个新的 MessageChannel 对象
+        var mc = new MessageChannel()
+        // 给父级发送一个端口,让发送方从这个端口发数据
+        console.log([mc.port1],"to")
+        window.parent.postMessage('to has loaded;',origin,[mc.port1])
+        // 接受并显示发送的信息
+        mc.port2.addEventListener('message',function(e){
+		    eleBox.innerHTML = e.data
+		    document.getElementById("to_info").innerHTML+=e.data
+		})
+        mc.port2.start()
+    } 
+    else{
+        eleBox.innerHTML = 'no support'    
+    }
+})
+</script>

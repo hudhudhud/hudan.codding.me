@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#FF6801",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "modal": "../../custom-component/modal/index",
+    "myimg": "../../custom-component/myimg/index"
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    body{
+      background-color: #f8f8f8;
+    }
+     body>div{
+        width:800px;
+        margin:auto;
+     }
+     .buttons{
+      list-style: none;
+      box-sizing: border-box;
+      margin:0;
+      padding: 0;
+      width:800px;
+      margin:auto;
+      margin-top:20px;
+      padding-left:60px;
+     }
+     .buttons li{
+      display: inline-block;
+      display: inline-block;
+      width: 200px;
+      height: 28px;
+      line-height: 28px;
+      border: 1px solid #e9e9e9;
+      border-radius: 3px;
+      margin-left: 6px;
+      margin-right: 6px;
+      text-align: center;
+      cursor: pointer;
+     }
+     .buttons li.current{
+      background-color: #49a9ee;
+      color: white;
+      transition: all 0.1s linear;
+     }
+
+  </style>
+  <link rel="stylesheet" href="slider.css">
+  <link rel="stylesheet" href="slider-3D.css">
+</head>
+<body>
+<div id="slider">
+  <img src="imgs/a.jpg">
+  <img src="imgs/b.jpg">
+  <img src="imgs/c.jpg">
+  <img src="imgs/d.jpg">
+  <img src="imgs/e.jpg">
+  <img src="imgs/f.jpg">
+</div>
+
+<ul class="buttons">
+  <li id="stop">停止</li>
+  <li id="next">下一张</li>
+  <li id="prev">上一张</li>
+  <li id="new">新增图片</li>
+  <li id="remove">移除图片</li>
+  <li ><button id="inc">+</button><span>轮播间隔时间</span><button id=desc>-</button></li>
+</ul>
+
+
+<div class="slider3D">
+  <div class="imgList">
+    <ul>
+      <li><a><img src="imgs/a.jpg"></a></li>
+      <li><a><img src="imgs/b.jpg"></a></li>
+      <li><a><img src="imgs/c.jpg"></a></li>
+      <li><a><img src="imgs/d.jpg"></a></li>
+      <li><a><img src="imgs/e.jpg"></a></li>
+      <li><a><img src="imgs/f.jpg"></a></li>
+    </ul>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="slider.js"></script>
+<script type="text/javascript" src="slider-3D.js"></script>
+<script type="text/javascript">
+  
+  slider3D=new Slider3D()
+  
+  slider=new Slider("#slider",{
+    "width":800,
+    "autoPlay":true,
+    "duration":3000
+  })
+  //a.on("beforePaly",console.log(1))
+  
+  $("ul").on("click",function(e){
+    var target=e.target
+    $("ul").find("li").each((i,li)=>{
+        li.classList.remove("current")
+    })
+    target.classList.add("current") 
+    if(e.target.id=="stop"){
+        if(target.innerText=="停止"){
+           slider.stop()
+           target.innerText="播放"
+           console.log("stop")
+        }
+        else if(target.innerText=="播放"){
+           slider.play()
+           target.innerText="停止"
+           console.log("start")
+        }
+    }
+    else  if(e.target.id=="next"){
+        slider.next()
+    }
+    else  if(e.target.id=="prev"){
+        slider.prev()
+    }
+    else if(e.target.id=="new"){
+      slider.add("imgs/x.jpg")
+    }
+    else if(e.target.id=="remove"){
+      slider.remove()
+    }
+    else if(e.target.id=="inc"){
+      slider.set("duration",slider.config.duration+1000)
+      $(target).siblings("span").text("轮播间隔时间"+slider.config.duration/1000+"s")
+      console.log("duration",slider.config.duration)
+    }
+    else if(e.target.id=="desc"){
+      slider.set("duration",slider.config.duration-1000)
+      $(target).siblings("span").text("轮播间隔时间"+slider.config.duration/1000+"s")
+      console.log("duration",slider.config.duration)
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,76 @@
+/* pages/sports/sign/index.wxss */
+.content{
+
+}
+.circle{
+  margin:auto;
+  margin-top:50rpx;
+  width:600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+  border:20rpx dashed #d7d4d5;
+  position: relative;
+  text-align: center;
+}
+.circle text{
+  display: block;
+  font-weight: bold;
+}
+.circle text.lab{
+  margin-top:150rpx;
+}
+.circle text.num{
+  font-size:5rem;
+  margin-top:10rpx;
+}
+.circle text.pm{
+  position: absolute;
+  width:300rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  border:5rpx solid #d7d4d5;
+  top:100%;
+  left:50%;
+  transform: translateX(-50%)  translateY(-80%);
+  text-align: center;
+  background-color:#eee;
+  border-radius: 50rpx;
+}
+.btn-xl{
+  margin:0 auto;
+  margin-top:60rpx;
+  color:#fff;
+  width:480rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 100rpx;
+  text-align:center;
+  font-size:1rem;
+}
+.lab{
+  font-size:1rem;
+  text-align: center;
+}
+.lab.con{
+  margin-top:60rpx;
+  font-weight: 500;
+}
+.lab.lis{
+  margin-top:100rpx;
+  color:#bcbcbc;
+}
+.list{
+  margin-top:50rpx;
+}
+.list .title{
+  margin-bottom:50rpx;
+  font-size:0.8rem;
+}
+.list .item{
+  padding:20rpx 10rpx;
+  border-top:1px solid #e6e5e2;
+  font-size:1rem;
+}
+.list .item .time{
+  font-size:0.8rem;
+}

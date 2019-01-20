@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css实现的机器猫</title>
+		<style type="text/css">
+		.x-center {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		}
+		[doraemon] {
+		margin: auto;
+		width: 315px;
+		height: 600px;
+		xborder: 1px solid;
+		position: relative;
+		padding: 0 100px;
+		}
+		[doraemon] * {
+		border: 2px solid;
+		box-sizing: border-box;
+		}
+		[head-a] {
+		width: 315px;
+		height: 303px;
+		border-style: none;
+		position: relative;
+		overflow: hidden;
+		}
+		[head-a] [head] {
+		width: 313px;
+		height: 313px;
+		border-radius: 50%;
+		background-color: #08BBE6;
+		position: absolute;
+		top: 25px;
+		/*box-shadow: -2px 0 5px 5px #000;*/
+		}
+		[head-a] [face] {
+		width: 267px;
+		height: 200px;
+		background-color: #FFF;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 72%;
+		transform: translate(-50%, -68%);
+		}
+		[head-a] [eye1],
+		[head-a] [eye2] {
+		width: 75px;
+		height: 86px;
+		position: absolute;
+		top: -40px;
+		background-color: #fff;
+		}
+		[head-a] [eye1] [eye-in],
+		[head-a] [eye2] [eye-in] {
+		width: 15px;
+		height: 15px;
+		background-color: #000;
+		border-radius: 50%;
+		position: absolute;
+		top: 60%;
+		transition: top 0.5s linear;
+		}
+		[head-a] [eye1] [eye-in]:hover,
+		[head-a] [eye2] [eye-in]:hover {
+		top: 40%;
+		}
+		[head-a] [eye1] {
+		left: 57px;
+		border-radius: 40%;
+		}
+		[head-a] [eye1] [eye-in] {
+		left: 50px;
+		}
+		[head-a] [eye2] {
+		right: 57px;
+		border-radius: 40%;
+		}
+		[head-a] [eye2] [eye-in] {
+		right: 50px;
+		}
+		[head-a] [nose] {
+		width: 35px;
+		height: 35px;
+		background-color: #c93e00;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		transform: translate(-50%, 32px);
+		}
+		[head-a] [nose] [nose-white] {
+		width: 3px;
+		height: 3px;
+		background-color: #fff;
+		border-radius: 50%;
+		position: absolute;
+		left: 70%;
+		top: 30%;
+		border-style: none;
+		box-shadow: 0 0 4px 4px #fff;
+		}
+		[head-a] [line] {
+		height: 80px;
+		width: 0.5px;
+		background-color: #000;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		transform: translate(-50%, 67px);
+		}
+		[head-a] [mouse] {
+		height: 250px;
+		width: 250px;
+		z-index: -1;
+		border-color: transparent;
+		border-bottom: 2px solid;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		transform: translate(-50%, -102px);
+		}
+		[head-a] [face-line] {
+		width: 240px;
+		height: 90px;
+		xbackground-color: rgba(0, 0, 0, 0.1);
+		border-style: none;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 10%;
+		z-index: -1;
+		}
+		[head-a] [face-line] * {
+		position: absolute;
+		width: 70px;
+		border-width: 1px;
+		}
+		[head-a] [face-line] [face-line-left],
+		[head-a] [face-line] [face-line-right] {
+		border-style: none;
+		}
+		[head-a] [face-line] [face-line-left] {
+		left: 10px;
+		}
+		[head-a] [face-line] [face-line-left] [face-line1] {
+		top: 30px;
+		transform: rotate(20deg);
+		}
+		[head-a] [face-line] [face-line-left] [face-line2] {
+		top: 50px;
+		}
+		[head-a] [face-line] [face-line-left] [face-line3] {
+		top: 70px;
+		transform: rotate(-20deg);
+		}
+		[head-a] [face-line] [face-line-right] {
+		right: 10px;
+		}
+		[head-a] [face-line] [face-line-right] [face-line4] {
+		top: 30px;
+		transform: rotate(-20deg);
+		}
+		[head-a] [face-line] [face-line-right] [face-line5] {
+		top: 50px;
+		}
+		[head-a] [face-line] [face-line-right] [face-line6] {
+		top: 70px;
+		transform: rotate(20deg);
+		}
+		[nake] {
+		width: 233px;
+		height: 23px;
+		background-color: #B42F00;
+		border-radius: 20px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 50%;
+		}
+		[nake] [ring] {
+		width: 43px;
+		height: 43px;
+		border-radius: 50%;
+		background-color: #f4ec27;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		transform: translateX(-50%) translateY(5px);
+		overflow: hidden;
+		}
+		[nake] [ring] [line-two] {
+		width: 40px;
+		height: 5px;
+		background-color: transparent;
+		position: absolute;
+		top: 30%;
+		}
+		[nake] [ring] [circle] {
+		width: 12px;
+		height: 10px;
+		background-color: #000;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 50%;
+		border-radius: 40%;
+		}
+		[nake] [ring] [line-y] {
+		width: 3px;
+		height: 20px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 50%;
+		}
+		[body] {
+		box-sizing: border-box;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: calc 73%;
+		height: 250px;
+		width: 250px;
+		z-index: -1;
+		border-style: none;
+		}
+		[body] [cloth] {
+		width: 223px;
+		height: 168px;
+		background-color: #08BBE6;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		}
+		[body] [cloth] [pocket] {
+		width: 173px;
+		height: 173px;
+		background-color: #fff;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: -20px;
+		}
+		[body] [cloth] [pocket] [pocket-p] {
+		width: 134px;
+		height: 133px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 50%;
+		overflow: hidden;
+		border-color: transparent;
+		border-top-color: #000;
+		}
+		[body] [cloth] [pocket] [pocket-p] [half-pocket] {
+		width: 131px;
+		height: 133px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		border-radius: 50%;
+		top: -50%;
+		overflow: hidden;
+		}
+		[body] [bottom-circle] {
+		width: 23px;
+		height: 23px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 86%;
+		overflow: hidden;
+		border-color: transparent;
+		}
+		[body] [bottom-circle] [bottom-half-circle] {
+		z-index: -1;
+		width: 23px;
+		height: 23px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 50%;
+		background-color: #B1B1B1;
+		border-radius: 50%;
+		}
+		[body] [foot] {
+		width: 250px;
+		height: 40px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 168px;
+		border-style: none;
+		z-index: -2;
+		}
+		[body] [foot] [foot-left],
+		[body] [foot] [foot-right] {
+		z-index: -1;
+		width: 48%;
+		height: 100%;
+		position: absolute;
+		top: -10px;
+		}
+		[body] [foot] [foot-left] {
+		border-top-left-radius: 50%;
+		border-top-right-radius: 50%;
+		border-bottom-left-radius: 30%;
+		border-bottom-right-radius: 25%;
+		}
+		[body] [foot] [foot-right] {
+		left: 52%;
+		border-top-right-radius: 50%;
+		border-top-left-radius: 50%;
+		border-bottom-right-radius: 30%;
+		border-bottom-left-radius: 25%;
+		}
+		[body] [hand-left] {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		left: -35%;
+		top: 18px;
+		xoverflow: hidden;
+		border-style: none;
+		}
+		[body] [hand-left] [hand] {
+		z-index: -5;
+		width: 80px;
+		height: 50px;
+		background-color: #08BBE6;
+		transform: rotate(-25deg);
+		position: absolute;
+		right: -25px;
+		top: 10px;
+		}
+		[body] [hand-left] [palm] {
+		width: 63px;
+		height: 63px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: absolute;
+		top: 25px;
+		}
+		[body] [hand-left] [hand-nothing] {
+		width: 4px;
+		height: 45px;
+		background-color: #08BBE6;
+		border-style: none;
+		position: absolute;
+		right: -4px;
+		top: 3px;
+		}
+		[body] [hand-right] {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		right: -35%;
+		top: 18px;
+		xoverflow: hidden;
+		border-style: none;
+		}
+		[body] [hand-right] [hand] {
+		z-index: -5;
+		width: 80px;
+		height: 50px;
+		background-color: #08BBE6;
+		transform: rotate(25deg);
+		position: absolute;
+		left: -25px;
+		top: 10px;
+		}
+		[body] [hand-right] [palm] {
+		width: 63px;
+		height: 63px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: absolute;
+		top: 25px;
+		right: 0;
+		}
+		[body] [hand-right] [hand-nothing] {
+		width: 4px;
+		height: 45px;
+		background-color: #08BBE6;
+		border-style: none;
+		position: absolute;
+		left: -4px;
+		top: 3px;
+		}
+		</style>
+	</head>
+	<body>
+		<div  doraemon>
+			<div head-a>
+				<div  head>
+					<div face>
+						<div eye1>
+							<div eye-in></div>
+						</div>
+						<div eye2>
+							<div eye-in></div>
+						</div>
+						<div nose><div nose-white></div></div>
+						<div line></div>
+						<div mouse></div>
+						<div face-line>
+							<div face-line-left>
+								<div face-line1></div>
+								<div face-line2></div>
+								<div face-line3></div>
+							</div>
+							<div face-line-right>
+								<div face-line4></div>
+								<div face-line5></div>
+								<div face-line6></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div nake>
+				<div ring>
+					<div line-two></div>
+					<div circle></div>
+					<div line-y></div>
+				</div>
+			</div>
+			<div body>
+				<div cloth>
+					<div pocket>
+						<div pocket-p>
+							<div half-pocket>
+								<div line></div>
+							</div>
+						</div>
+					</div>
+					<div bottom-circle>
+						<div bottom-half-circle></div>
+					</div>
+				</div>
+				<div hand-left>
+					<div hand>
+					</div>
+					<div  palm>
+					</div>
+					<div hand-nothing>
+					</div>
+				</div>
+				<div hand-right>
+					<div hand>
+					</div>
+					<div  palm>
+					</div>
+					<div  hand-nothing>
+					</div>
+				</div>
+				<div foot>
+					<div foot-left></div>
+					<div foot-right></div>
+				</div>
+			</div>
+		</div>
+		<!-- <script src="less.min.js"></script> -->
+	</body>
+</html>

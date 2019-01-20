@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
+  <style type="text/less">
+    *{xbackground-color: rgba(0,0,0,0.1);}
+    html,body{
+      width:100%;
+      height: 100%;
+      margin:0;
+    }
+    p{
+      margin:0;
+      padding: 0;
+    }
+    #app{
+      width:100%;
+      height: 100%;
+    }
+   .left{
+      width:270px;
+      height: 100%;
+      position: fixed;
+      left:0;
+      top:0;
+      background-image: url(bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      color:white;
+      font-weight: 20px;
+      .head{
+         width: 220px;
+          margin:auto;
+          margin-top:50px;
+          &>*{
+            text-align: center;
+          }
+          .head-img{
+            width: 200px;
+            height: 200px;
+            margin:auto;
+            border:1px solid transparent;
+            border-radius: 50%;
+            background-image: url(head.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          .name{
+            font-size: 30px;
+            padding: 0;
+          }
+      }
+      .menu{
+          display: flex;
+          flex-direction: column;
+          margin-top:10px;
+          a{
+            text-decoration: none;
+            color:white;
+            margin-top:10px;
+            margin-left:100px;
+          }
+      }
+    }
+    
+    .right{
+      color:black;
+      margin-top:20px;
+      margin-left:290px;
+      .blog-list{
+        .blog-list-item{
+          padding: 30px;
+          border-bottom: 1px solid #ddd;
+          margin:20px;
+            a{
+              font-size: 20px;
+              text-decoration: none;
+              &:hover{
+                color:blue;
+              };
+            }
+            span{
+              float:right;
+            }
+            p{
+              margin-top:10px;
+            }
+            .continue{
+              font-size: 16px;
+              color:#076dd0s;
+              &:hover{
+                text-decoration:underline;
+              };
+            }
+        }
+     }
+    }
+
+    @media (max-width:800px){
+      .left {
+        width:100%;
+        height: auto;
+        position: relative;
+        .head{
+           width:100%;
+           margin:0;
+          .head-img{
+            width: 56px;
+            height: 56px;
+            position: absolute;
+            top:12px;
+            left:12px;
+          }
+          .name{
+            padding-top:20px;
+            margin:0;
+          }
+        }
+        .menu{
+          width:100%;
+          display:inline-block;
+          margin-left:50%;
+          padding: 20px;
+          transform: translateX(-50%);
+          text-align: center;
+           a{
+             text-decoration: none;
+             color:white;
+             margin-left:11px;
+          }
+        }
+      }
+      .right{
+         width:100%;
+         margin:auto;
+          .blog-list{
+            .blog-list-item{
+              padding: 10px 0;
+              border-bottom: 1px solid #ddd;
+              margin:20px;
+            }
+        }
+      }
+    }
+
+    @media screen and (min-width:800px) and (max-width: 1024px){
+      .left {
+        width:210px;
+        height: 100%;
+        position: fixed;
+        left:0;
+        top:0;
+        .head{
+          width: 220px;
+          margin:auto;
+          margin-top:50px;
+          .head-img{
+            width: 200px;
+            height: 200px;
+          }
+        }
+        .menu{
+            display: flex;
+            flex-direction: column;
+            margin-top:10px;
+            a{
+              text-decoration: none;
+              color:white;
+              margin-top:10px;
+              margin-left:100px;
+            }
+        }
+      }
+      .right{
+        margin-top:20px;
+        margin-left:230px;
+      }
+    }
+  </style>
+</head>
+<body>
+<section id="app">
+<div class="left">
+    <section class="head">
+      <div class="head-img"></div>
+      <p class="name">hu dan</p>
+      <p class="say">life is like this</p>
+    </section>
+    <section class="menu">
+      <router-link to="/">首页</router-link>
+      <router-link to="/post/topic">专题</router-link>
+      <router-link to="/post/file">归档</router-link>
+      <router-link to="/post/link">友链</router-link>
+      <router-link to="/post/about">关于</router-link>
+    </section>
+</div>
+<div class="right">
+  <router-view></router-view>
+</div>
+</section>
+</body>
+<script type="text/javascript" src="less.min.js"></script>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src='vue-router.js'></script>
+  <script type="text/javascript" src="vuex@2.3.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/3.2.0/av-min.js"></script>
+  <script type="text/javascript" src="article.js"></script>
+  <script type="text/javascript">
+    var APP_ID = '1UHv40hnphEODjDaa7eOWR2q-gzGzoHsz';
+    var APP_KEY = 'YNbTneQAz6RVilCPMTlJyF1N';
+
+    AV.init({
+      appId: APP_ID,
+      appKey: APP_KEY
+    });
+
+    const store=new Vuex.Store({
+      state:{
+        articles:[],
+        current:{}
+      },
+      mutations:{
+        init(state,articles){
+          state.articles=articles
+        },
+        // get(state,id){
+        //   state.current=state.articles.filter(id=>id==id)[0]
+        // }
+      },
+
+    })
+    router=new VueRouter({
+      routes:[
+      {
+        path:"/",
+        component:{
+            template:`
+              <section class="blog-list">
+                <div v-for="item in this.articles" class="blog-list-item">
+                  <a :href="'#/home/'+item.id" >{{item.title}}</a>
+                  <span>{{item.createdAt.toLocaleString()}}</span>
+                  <p>{{item.content.length>200?item.content.substr(0,200)+"...":item.content}}</p>
+                  <a :href="'#/home/'+item.id" class="continue">继续阅读 »</a>
+                </div>
+              </section>
+            `,
+            created () {
+              this.fetchData()
+            },
+            watch: {
+              // 如果路由有变化，会再次执行该方法
+              '$route': 'fetchData'
+            },
+            methods: {
+              fetchData,
+            },
+            computed:{
+              articles(){
+                 return this.$store.state.articles
+              }
+           }
+        },
+      },
+      {
+        path:"/home/:id",
+        component:{
+          template:`
+            <section class="blog">
+              <div>
+                <p>{{this.article.title}}</p>
+                <p>{{this.article.content}}</p>
+              </div>
+            </section>
+          `,
+          data(){
+            return {
+              article:null
+            }
+          },
+          created() {
+            let callback=()=>{
+                this.article=this.$store.state.articles.filter(it=>it.id==this.$route.params.id)[0]
+                if(!this.article){
+                  this.$router.push({name: 'error'});
+                }
+            }
+            if(!this.$store.state.articles||this.$store.state.articles.length==0){
+              //刷新需要重新获取数据
+              fetchData(callback.bind(this))
+            }
+            else{
+             callback()
+            }
+          },
+        },
+      },
+      {
+        path:"/post/:title",
+        component:{
+          template:`
+          <div>
+            {{$route.params.title}}
+          </div>
+          `
+        },
+      },
+      {
+        name:"error",
+        path:'*',
+        component:{
+          template:`
+          <div>
+            <h5>404</h5>
+          </div>
+        `
+        }
+      },]
+    })
+    app=new Vue({
+      el:"#app",
+      store,
+      router,
+      data:{
+        
+      },
+
+    })
+
+  function  fetchData (callback) {
+      var query = new AV.Query('Article');
+      query.descending('createdAt');
+      query.find().then(function(articles) {
+        var result=[]
+        articles.forEach(function(article) {
+          var id = article.get('objectId')
+          var title = article.get('title')
+          var content = article.get('content')
+          var createdAt = new Date(article.get("createdAt"))
+          result.push({id,title,content,createdAt})
+        })
+        app.$store.commit("init",result)
+        if(callback)
+          callback()
+      }).catch(e=>{
+        console.log("数据获取失败:"+e)
+        app.$store.commit("init",new Array(10).fill(1).map(x=>x={id:1,title:1,content:1111,createdAt:new Date()}))
+      })
+  }
+  </script>
+</html>

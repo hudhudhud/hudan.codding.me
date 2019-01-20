@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style type="text/less">
+		.x-center{
+				position: absolute;
+				left:50%;
+				transform: translateX(-50%);
+		}
+		@dorea-color:#08BBE6;
+		[doraemon]{
+			margin:auto;
+			width:315px;
+			height:600px;
+			xborder:1px solid;
+			position: relative;
+		      padding:0 100px;
+		      *{
+				border:2px solid;
+				box-sizing: border-box;
+			}
+		}
+		[head-a]{
+			width:315px;
+			height: 303px;
+			border-style: none;
+			position: relative;
+			overflow: hidden;
+			*{
+			}
+			[head]{
+				width:313px;
+				height: 313px;
+				border-radius: 50%;
+				background-color:@dorea-color;
+				position: absolute;
+				top:25px;
+				/*box-shadow: -2px 0 5px 5px #000;*/
+			}
+			[face]{
+				width:267px;
+				height: 200px;
+				background-color: #FFF;
+				border-radius: 50%;
+				.x-center;
+				top:72%;
+				transform: translate(-50%,-68%);
+			}
+			[eye1],[eye2]{
+				width: 75px;
+				height: 86px;
+				position: absolute;
+				top:-40px;
+				background-color: #fff;
+					[eye-in]{
+						width: 15px;
+						height: 15px;
+						background-color: #000;
+						border-radius: 50%;
+						position: absolute;
+						top:60%;
+						transition: top 0.5s linear;
+						&:hover{
+							top:40%;
+						};
+					}
+			}
+			[eye1]{
+				left:57px;
+				border-radius: 40%;
+				[eye-in]{
+					left:50px;
+				}
+			}
+			[eye2]{
+				right:57px;
+				border-radius: 40%;
+				[eye-in]{
+					right:50px;
+				}
+			}
+			[nose]{
+				width: 35px;
+				height: 35px;
+				background-color: #c93e00;
+				border-radius: 50%;
+				.x-center;
+				transform: translate(-50%,32px);
+				[nose-white]{
+					width: 3px;
+					height: 3px;
+					background-color: #fff;
+					border-radius: 50%;
+					position: absolute;
+					left:70%;
+					top:30%;
+					border-style: none;
+					box-shadow: 0 0 4px 4px #fff;
+				}
+			}
+			[line]{
+				height:80px;
+				width:0.5px;
+				background-color:#000;
+				.x-center;
+				transform: translate(-50%,67px);
+			}
+			[mouse]{
+				height: 250px;
+				width: 250px;
+				z-index: -1;
+				border-color: transparent;
+				border-bottom:2px solid;
+				border-radius: 50%;
+				.x-center;
+				transform: translate(-50%,-102px);
+			}
+			[face-line]{
+				width: 240px;
+				height: 90px;
+				xbackground-color: rgba(0,0,0,0.1);
+				border-style: none;
+				.x-center;
+				top:10%;
+				z-index: -1;
+				*{
+					position: absolute;
+					width:70px;
+					border-width:1px;
+				}
+				[face-line-left],[face-line-right]{
+					border-style: none;
+				}
+				[face-line-left]{
+					left:10px;
+					[face-line1]{
+						top:30px;
+						transform: rotate(20deg);
+					}
+					[face-line2]{
+						top:50px;
+					}
+					[face-line3]{
+						top:70px;
+						transform: rotate(-20deg);
+					}
+				}
+				[face-line-right]{
+					right:10px;
+					[face-line4]{
+						top:30px;
+						transform: rotate(-20deg);
+					}
+					[face-line5]{
+						top:50px;
+					}
+					[face-line6]{
+						top:70px;
+						transform: rotate(20deg);
+					}
+				}
+			}
+		}
+		[nake]{
+				width: 233px;
+				height: 23px;
+				background-color: #B42F00;
+				border-radius: 20px;
+				.x-center;
+				top:50%;
+				[ring]{
+					width: 43px;
+					height: 43px;
+					border-radius: 50%;
+					background-color: #f4ec27;
+					.x-center;
+					transform: translateX(-50%) translateY(5px);
+					overflow: hidden;
+					[line-two]{
+						width: 40px;
+						height: 5px;
+						background-color: transparent;
+						position: absolute;
+						top:30%;
+					}
+					[circle]{
+						width: 12px;
+						height: 10px;
+						background-color: #000;
+						.x-center;
+						top:50%;
+						border-radius: 40%;
+					}
+					[line-y]{
+						width: 3px;
+						height: 20px;
+						.x-center;
+						top:50%;
+					}
+				}
+		}
+		[body]{
+			box-sizing: border-box;
+			.x-center;
+			top:calc (50% + 23px);
+			height: 250px;
+			width:250px;
+			z-index: -1;
+			border-style: none;
+			[cloth]{
+				width: 223px;
+				height: 168px;
+				background-color: @dorea-color;
+				.x-center;
+				[pocket]{
+					width: 173px;
+					height: 173px;
+					background-color: #fff;
+					border-radius: 50%;
+					.x-center;
+					top:-20px;
+					[pocket-p]{
+						width: 134px;
+						height: 133px;
+						.x-center;
+						top:50%;
+						overflow: hidden;
+						border-color:transparent;
+						border-top-color:#000;
+						[half-pocket]{
+							width: 131px;
+							height: 133px;
+							.x-center;
+							border-radius: 50%;
+							top:-50%;
+							overflow: hidden;
+						}
+					}
+				}
+			}
+			[bottom-circle]{
+				width: 23px;
+				height: 23px;
+				.x-center;
+				top:86%;
+				overflow: hidden;
+				border-color: transparent;
+				[bottom-half-circle]{
+					z-index: -1;
+					width: 23px;
+					height: 23px;
+					.x-center;
+					top:50%;
+					background-color: #B1B1B1;
+					border-radius: 50%;
+				}
+			}
+			[foot]{
+				width: 250px;
+				height: 40px;
+				.x-center;
+				top:168px;
+				border-style: none;
+				z-index: -2;
+				[foot-left],[foot-right]{
+					z-index: -1;
+					width: 48%;
+					height: 100%;
+					position: absolute;
+					top:-10px;
+				}
+				[foot-left]{
+					border-top-left-radius: 50%;
+					border-top-right-radius: 50%;
+					border-bottom-left-radius: 30%;
+					border-bottom-right-radius: 25%;
+				}
+				[foot-right]{
+					left:52%;
+					border-top-right-radius: 50%;
+					border-top-left-radius: 50%;
+					border-bottom-right-radius: 30%;
+					border-bottom-left-radius: 25%;
+				}
+			}
+			[hand-left]{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left:-35%;
+				top:18px;
+				xoverflow: hidden;
+				border-style: none;
+				[hand]{
+					z-index: -5;
+					width:80px;
+					height: 50px;
+					background-color: @dorea-color;
+					transform: rotate(-25deg);
+					position: absolute;
+					right:-25px;
+					top:10px;
+				}
+				[palm]{
+					width: 63px;
+					height: 63px;
+					border-radius: 50%;
+					background-color: #fff;
+					position: absolute;
+					top:25px;
+				}
+				[hand-nothing]{
+					width: 4px;
+					height: 45px;
+					background-color:@dorea-color;
+					border-style: none;
+					position: absolute;
+					right: -4px;
+					top:3px;
+
+				}
+			}
+			[hand-right]{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				right:-35%;
+				top:18px;
+				xoverflow: hidden;
+				border-style: none;
+				[hand]{
+					z-index: -5;
+					width:80px;
+					height: 50px;
+					background-color: @dorea-color;
+					transform: rotate(25deg);
+					position: absolute;
+					left:-25px;
+					top:10px;
+				}
+				[palm]{
+					width: 63px;
+					height: 63px;
+					border-radius: 50%;
+					background-color: #fff;
+					position: absolute;
+					top:25px;
+					right: 0;
+				}
+				[hand-nothing]{
+					width: 4px;
+					height: 45px;
+					background-color:@dorea-color;
+					border-style: none;
+					position: absolute;
+					left: -4px;
+					top:3px;
+				}
+			}
+		}
+		</style>
+	</head>
+	<body>
+	<div doraemon>
+		<div head-a>
+			<div  head>
+				<div face>
+					<div eye1>
+						<div eye-in></div>
+					</div>
+					<div eye2>
+						<div eye-in></div>
+					</div>
+					<div nose><div nose-white></div></div>
+					<div line></div>
+					<div mouse></div>
+					<div face-line>
+						<div face-line-left>
+							<div face-line1></div>
+							<div face-line2></div>
+							<div face-line3></div>
+						</div>
+						<div face-line-right>
+							<div face-line4></div>
+							<div face-line5></div>
+							<div face-line6></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div nake>
+				<div ring>
+					<div line-two></div>
+					<div circle></div>
+					<div line-y></div>
+				</div>
+		</div>
+		<div body>
+			<div cloth>
+				<div pocket>
+				    <div pocket-p>
+						<div half-pocket>
+							<div line></div>
+						</div>
+					</div>
+				</div>
+				<div bottom-circle>
+					<div bottom-half-circle></div>
+				</div>
+			</div>
+			<div hand-left>
+				<div hand>
+				</div>
+				<div  palm>
+				</div>
+				<div hand-nothing>
+				</div>
+			</div>
+			<div hand-right>
+				<div hand>
+				</div>
+				<div  palm>
+				</div>
+				<div  hand-nothing>
+				</div>
+			</div>
+			<div foot>
+			<div foot-left></div>
+			<div foot-right></div>
+			</div>
+		</div>
+	</div>
+		<script src="less.min.js"></script>
+	</body>
+</html>

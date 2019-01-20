@@ -1,0 +1,20 @@
+<!--pages/tagList/index.wxml-->
+<view class='content'>
+   <view wx:for="{{tags}}" class='group mod'>
+       <text class='groupName main-color'>— {{item.name}} —</text>
+       <view class='tagList three clearfix' wx:if="{{item.show==3}}">
+            <navigator class='tag' wx:for="{{item.tags}}" wx:for-item="tagItem"
+            url="../meals/index?title={{tagItem.name+'食谱'}}">
+                <image src="{{tagItem.url}}"></image>
+                <text>{{tagItem.name}}</text>
+            </navigator>
+       </view>
+        <view class='tagList two clearfix' wx:if="{{item.show==2}}">
+            <navigator class='tag' wx:for="{{item.tags}}" wx:for-item="tagItem"
+            url="../meals/index?title={{tagItem.name+'食谱'}}" style="background-image:url({{tagItem.url}})">
+            <!-- 背景图片用网络图片或者base64的才能在手机端显示!!!! -->
+                <text>{{tagItem.name}}</text>
+            </navigator>
+       </view>
+   </view>
+</view>

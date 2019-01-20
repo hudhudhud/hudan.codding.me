@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<!-- http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/ -->
+<body>
+<iframe src="from-iframe2.html"></iframe>
+<iframe src="to-iframe2.html"></iframe>
+<p id="info"></p>
+</body>
+</html>
+<script type="text/javascript">
+var origin="http://192.168.0.103:8000"
+// 监听从右侧框架传来的信息
+window.addEventListener('message', function(evt) {
+    if (evt.origin == origin){
+        if (evt.ports.length > 0 ){
+            // 将端口转移到其他文档
+            window.frames[0].postMessage('端口打开',origin, evt.ports)
+        }
+
+        document.getElementById("info").innerHTML+=evt.data
+    }    
+}, false);
+</script>

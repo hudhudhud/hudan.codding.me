@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>proDetail</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="user-scalable=1">
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<style type="text/css">
+	html,body{
+		width:100%;
+		height:100%;
+		margin:0;
+	}
+	div{
+		font-size:60px;
+		box-sizing: border-box;
+		border:1px solid red;
+		width:100%;
+		height: 100%;
+	}
+	img{
+		width:100%;
+		height: auto;
+
+	}
+	.img-show-window{
+		z-index:900000;
+		background-color:black;
+		position:fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 100%;
+	}
+	.img-show{
+		position:absolute;
+		top:50%;
+		transform:translateY(-50%);
+		width:100%;
+		height:auto;
+	}
+</style>
+<body>
+<div>
+	<img src="imgs\a.jpg">
+	<img src="imgs\b.jpg">
+	<img src="imgs\c.jpg">
+	<img src="imgs\d.jpg">
+	<img src="imgs\e.jpg">
+	<img src="imgs\f.jpg">
+</div>
+</body>
+<script type="text/javascript">
+jQuery(function($){
+	var click=0
+	var lastTime=-Infinity
+	$("div").find("img").on("click",function(){
+		var div=$(`<div class="img-show-window">
+				   <img src=${$(this).attr("src")} class="img-show"></img>
+				   </div>`)
+		$("body").append(div)
+		$("body").attr("style","overflow:hidden")
+		var img=$(div).find("img")
+		
+		var scale=1
+		var time=500
+		var end=false
+		var preX=0,preY=0
+		var preDistanceX=0,preDistanceY=0
+		var timeId
+
+		var startTouches
+		var endTouches
+		var isMove=false
+		$(div).on("touchstart",function(e) {
+			//双指放大
+			if(e.touches&&e.touches.length>1){
+				console.log("user scale")
+				isMove=true
+				startTouches=e.touches
+				return
+			}
+
+			//单指双击
+			click++
+			if(Date.now()-lastTime<time&&click==2){
+				console.log("double scale")
+				doubleScale()
+				return
+			}
+			
+	    	//单指单击
+	    	timeId=setTimeout(()=>{
+	    		if(end){
+			       click=0
+			       lastTime=-Infinity
+			       $(this).find("img").attr("style","")
+			       $("body").attr("style","")
+				   $(this).remove()
+	    		}
+	    	},time)
+
+	    	//单指
+			end=false
+			preX=e.touches[0].clientX
+			preY=e.touches[0].clientY
+	    	lastTime=Date.now()
+		})
+		
+
+		function doubleScale() {
+			click=0
+			lastTime=-Infinity
+			clearTimeout(timeId)
+			if($(img).attr("style")
+				&&$(img).attr("style").indexOf(`transform`)>-1){
+				scale=1
+	    		$(img).attr("style","transition:0.2s linear all;")
+	    	}
+	    	else {
+	    		scale=2
+	    		$(img).attr("style",`transform:scale(2);transition:0.1s linear all;top:25%;`)
+	    	}
+		}
+
+		function getDistance(p1,p2) {
+			var x=p2.clientX-p1.clientX
+			var y=p2.clientY-p1.clientY
+			return Math.sqrt(x**2+y**2)
+		}
+
+		//单击图片返回主页面
+		// $(img).on("click",function(e) {
+		//  	   click=0
+		//        lastTime=-Infinity
+		//        $("body").attr("style","")
+		// 	   $(this).parent("div").remove()
+		// 	   $("body").attr("style","")
+		// })
+
+		$(img).on("touchmove",function(e) {
+			//双指放大
+			if(e.touches&&e.touches.length>1&&isMove){
+				console.log("user scale ing")
+				endTouches=e.touches
+				scale=getDistance(endTouches[0],endTouches[1])/getDistance(startTouches[0],startTouches[1])
+				scale=scale.toFixed(2)
+				starTouches=endTouches
+				var oldStyle=$(this).attr("style")
+				$(this).attr("style",oldStyle+`transform:scale(${scale});transition:0.1s linear all;top:25%;`)
+			}
+			//单指拖动
+			else{
+				if(scale==1)
+					return
+				click=0
+				var x=e.touches[0].clientX
+				var y=e.touches[0].clientY
+				var distanceX=preDistanceX+x-preX
+				var distanceY=preDistanceY+y-preY
+				// var tran3d =$(this).attr("style")?$(this).attr("style").match(/translate3d\((.+)\)/)[1].split(","):null
+				//console.log(distanceX,distanceY,e.touches[0])
+			    $(this).attr("style",`transform:scale(${scale}) translate3d(${distanceX/2}px,${distanceY/2}px, 0px);top:25%;`)
+			    preDistanceX=distanceX
+			    preDistanceY=distanceY
+			    preX=x
+				preY=y
+			}
+			console.log(scale)
+			e.preventDefault()
+		})
+		$(div).on("touchend",function() {
+			isMove=false
+			end=true
+		})
+	})
+})
+</script>
+</html>

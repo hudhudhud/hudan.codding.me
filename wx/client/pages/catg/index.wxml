@@ -1,0 +1,23 @@
+<view class='content'>
+  <scroll-view class='left' scroll-y  scroll-into-view="{{scrollViewLeft}}" scroll-top="{{scrollTop}}">
+    <block wx:for="{{catgList}}" wx:key="{{item.id}}">
+       <text bindtap="catgTap" class="{{currentCatg==item.id?'active':''}}" data-id="{{item.id}}" 
+       id="catg_{{item.id}}">{{item.name}}</text>
+    </block>
+  </scroll-view>
+  <scroll-view class='right'  scroll-y bindscroll="scroll" 
+   scroll-into-view="{{scrollViewRight}}"  bindscrolltoupper="scrolltoupper"  bindscrolltolower="scrolltolower" upper-threshold="1500" lower-threshold="1500" scroll-with-animation="true"  enable-back-to-top="true">
+    <block wx:for="{{catgList}}" wx:for-item="catg"  wx:key="{{catg.id}}">
+      <view data-id="{{catg.id}}" id="item_catg_{{catg.id}}" class="catg-pro" >
+          <myimg my-class='catg-img' src="{{catg.img}}" my-style="height:{{css_height.catg_img}}px"></myimg>
+          <p class="catg-name" style="height:{{css_height.catg_name}}px;line-height:{{css_height.catg_name}}px">{{catg.name}}</p>
+          <block wx:for="{{showList[catg.id]}}" wx:for-item="pro"  wx:key="{{pro.id}}">
+              <view class='item' style="height:{{css_height.catg_item}}px" bindtap='goItemDetail' data-id="{{pro.id}}" >
+                <myimg src="{{pro.img}}"></myimg>
+                <p>{{pro.name}}</p>
+              </view>
+          </block>
+      </view>
+    </block>
+  </scroll-view>
+</view>

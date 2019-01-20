@@ -1,0 +1,40 @@
+<import src="../template/searchBar.wxml" />
+ 
+<view class='content'>
+    <template is="searchBar" data="{{searchValue, autoFocus}}" /> 
+    <block wx:if="{{noSearch&&!showInputList.length}}">
+      <view  class="search-label" >
+        <block wx:for="{{searchList}}" >
+          <text  bindtap="bindconfirm" data-key="{{item}}">{{item}}</text>
+        </block>
+      </view>
+      <view class="search-his" wx:if="{{searchHistory.length}}">
+          <text class="ssls">搜索历史</text>
+          <block wx:for="{{searchHistory}}" >
+              <text class="ls" bindtap="bindconfirm" data-key="{{item}}">{{item}}</text>
+          </block>
+          <text class="qcls" bindtap="bindClearHistory">清除搜索记录</text>
+      </view>
+    </block>
+    <view wx:if="{{showInputList.length}}" class="show-input"> 
+         <block wx:for="{{showInputList}}" wx:key="{{item.id}}">
+            <text  bindtap="bindconfirm" data-key="{{item.name}}" >{{item.name}}</text>
+         </block>
+    </view>
+     <view class="noPro" wx:if="{{showList.length==0&&!noSearch}}"><text>没有找到相关商品</text></view>
+     <view class="pro-list"  wx:if="{{!noSearch}}">
+        <block wx:for="{{showList}}" wx:key="{{index}}">
+          <view class='pro' bindtap="goDetail" data-id="{{item.id}}" >
+            <myimg src="{{item.img}}"></myimg>
+            <view class='pro-info'>
+              <view class='info'>
+                <text class="pro-name">{{item.name}}</text>
+                <text class="pro-desc">{{item.detail.desc}}</text>
+                <text class="pro-price">{{item.price}}</text>
+              </view>
+            </view> 
+          </view>
+        </block>
+    </view> 
+    <view class="loading" wx:if="{{reachBottom}}"><text>-----我是有底线的-----</text></view>
+</view>

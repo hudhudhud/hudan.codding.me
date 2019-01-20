@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>postMsg</title>
+</head>
+<body>
+<input type="button" name="" value="one" id="one">
+<input type="button" name="" value="two" id="two">
+<p id='state'>info</p>
+</body>
+<script type="text/javascript">
+window.name="postMsg"
+var message
+var origin="http://hudan.coding.me"
+var inputs=document.querySelectorAll("input[type=button]")
+inputs.forEach(function(item){
+	item.addEventListener("click",function(){
+		message=this.getAttribute("value")
+		window.open("postMsg_MsgWindow.html");    
+		console.log(message)
+	})
+})
+window.addEventListener("message",function(e){
+	//debugger
+	var id;
+	console.log(e.origin,origin)
+	if(e.origin==origin){
+		switch(e.data){
+			case 'ready':
+				document.getElementById("state").innerHTML=e.data
+				id=setTimeout(function(win){
+					console.log(win.name)
+					win.postMessage(message,origin)
+				},1000,e.source)//e.source作为setTimeout function传入参数win,即发信息的窗口
+				break;
+			case 'closed':
+				document.getElementById("state").innerHTML=e.data
+				clearTimeout(id)
+				break;
+			default:
+				 document.getElementById("state").innerHTML=e.data
+				 break;
+		}	
+	}
+})
+</script>
+</html>

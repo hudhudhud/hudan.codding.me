@@ -1,0 +1,39 @@
+<modal modal-hidden="{{is_modal_Hidden}}" modal-msg="{{is_modal_Msg}}" modal-title="{{is_modal_Title}}" 
+ bindmodalCancel="modalCancel"   bindmodalSure="modalSure"
+ modal-sure-msg="{{is_modal_suremsg}}"   modal-cancel-msg="{{is_modal_cancelmsg}}"> 
+<text></text>
+</modal>
+<view wx:if="{{carList&&carList.length>0}}">
+    <scroll-view class='carList'>
+        <block wx:for="{{carList}}">
+            <view class='item clearfl {{item.move?"delete":""}}' bindtouchstart='startMoveItem' bindtouchend='endMoveItem' data-item="{{index}}" data-id="{{item.id}}" >
+               <view class="left"  bindtap='chooseSpec' data-item="{{index}}" data-id="{{item.id}}" >
+                <view  class='checkbox {{item.checked?"checked":""}}'  bindtap='checkboxChange' data-item="{{index}}">
+                  <myimg src="checked.png"></myimg>
+                </view>
+                <myimg src="{{item.img}}"></myimg>
+                <text>{{item.name}}</text>
+                <text>{{item.specStr}}</text>
+               </view>
+               <view class="right">
+                  <text class="num">{{item.num}} x </text>
+                  <text class="price">{{item.price}}元</text>
+                  <text class="remove" bindtap="remove" data-item="{{index}}">删除</text> 
+               </view>
+            </view>
+        </block>
+    </scroll-view>
+     <view class="all" >
+        <view  class='checkbox checkboxAll {{checkAll?"checked":""}} '  bindtap='allCheckboxChange'>
+           <myimg src="checked.png"></myimg>
+        </view>
+        <text>全选</text>
+        <text class="allMoney">合计：<text>{{allCheckedMoney}}元</text></text>
+        <text class='submit {{allCheckedNum?"":"disable"}}' bindtap="submit">结算({{allCheckedNum}})</text>
+    </view> 
+</view>
+<view wx:else  class='no-pro'>
+  <view class="car_img"><myimg src="shopping-cart.png"></myimg></view>
+  <text>购物车还是空的</text>
+  <text class="go_mi"  bindtap='bindGoMi'>到MI商城逛逛</text>
+</view>

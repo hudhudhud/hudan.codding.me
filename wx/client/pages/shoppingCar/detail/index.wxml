@@ -1,0 +1,22 @@
+<!--pages/shoppingCar/detail/index.wxml-->
+<view class='content'>
+    <text class="title">商品和数量</text>
+    <block wx:for="{{specList}}">
+        <view class="spec-item"  bindtap='bindChooseSpec' data-index="{{index}}">
+            <view>
+                <text>{{item.specStr}}</text>
+                <text class="checked {{chooseSpec.specStr==item.specStr?'active':''}}">v</text>
+                <text class="pri">{{item.price}}</text>
+            </view>
+        </view>
+    </block>
+    <picker bindchange="bindPickerChange" value="{{num}}" range="{{numAry}}">
+      <view class="picker clearfix">
+        <title class="gmsl">购买数量</title>
+        <title class="num">{{numAry[num]}}</title>
+      </view>
+    </picker>
+
+    <text  class="btnSure" bindtap='bindCommit'>确定</text>
+    <text  class="btnDelete"  bindtap='bindDelete'>删除</text>
+</view>
